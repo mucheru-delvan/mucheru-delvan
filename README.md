@@ -5,11 +5,11 @@
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=mucheru-delvan&label=Profile%20views&color=0e75b6&style=flat" alt="mucheru-delvan" /> </p>
 
-🎓 I’m currently pursuing **Microprocessor Technology & Instrumentation** at the **University of Nairobi**  
+🎓 I'm currently pursuing **Microprocessor Technology & Instrumentation** at the **University of Nairobi**  
 
-- 🔭 I’m currently working on **strengthening my backend skills through Python and real-world projects**  
+- 🔭 I'm currently working on **strengthening my backend skills through Python and real-world projects**  
 - 🌱 I'm currently strengthening my **backend engineering skills** through building robust APIs and scalable server-side applications. 
-- 👯 I’m looking to collaborate on **open-source Python projects and backend systems**  
+- 👯 I'm looking to collaborate on **open-source Python projects and backend systems**  
 - 📫 How to reach me **delvanmucheru@gmail.com**  
 - ⚡ Fun fact: **"Turning micro-level 🔬 circuits into macro-level systems 🌐"**  
 
@@ -17,7 +17,7 @@
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
-  <a href="https://www.linkedin.com/in/delvan-mucheru-530a57364/" target="_blank">
+  <a href="https://www.linkedin.com/in/delvan-mucheru/" target="_blank">
     <img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="LinkedIn" height="30" width="40" />
   </a>
   <a href="https://www.hackerrank.com/profile/delvanmucheru" target="_blank">
@@ -62,5 +62,4 @@
 <p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=mucheru-delvan&show_icons=true&locale=en" alt="mucheru-delvan" /></p>
 
 <p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=mucheru-delvan&" alt="mucheru-delvan" /></p>
-
 
