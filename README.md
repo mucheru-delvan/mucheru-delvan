@@ -62,11 +62,5 @@
   </a>
 </p>
 
----
 
-### 📊 GitHub Stats
-<p align="left">
-  <img src="https://github-readme-stats.vercel.app/api?username=mucheru-delvan&show_icons=true&theme=radical" alt="Delvan's GitHub Stats" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mucheru-delvan&layout=compact&theme=radical" alt="Top Languages" />
-</p>
 
