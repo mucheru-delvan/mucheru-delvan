@@ -14,7 +14,7 @@
 - 🔭 Strengthening my backend skills through **Python and real-world projects**  
 - 🌱 Building **robust APIs and scalable server-side applications**  
 - 👯 Looking to collaborate on **open-source Python projects and backend systems**  
-- 📫 Reach me at **delvanmucheru@gmail.com**  
+- 📫 Reach me at <a href="mailto:delvanmucheru@gmail.com" target="_blank"><img src="https://img.shields.io/badge/Gmail-EA4335?style=flat&logo=gmail&logoColor=white" alt="Gmail" height="30" /></a>  
 - ⚡ Fun fact: **"Turning micro-level 🔬 circuits into macro-level systems 🌐"**
 
 ---
@@ -32,14 +32,10 @@
   <img src="https://custom-icon-badges.demolab.com/badge/Visual%20Studio%20Code-0078d7.svg?logo=vsc&logoColor=white" alt="VS Code" height="30" />
 </p>
 
-
 ---
 
-### 💬 Connect with me via this
+### 💬 Connect with me
 <p align="left">
-  <a href="mailto:delvanmucheru@gmail.com" target="_blank">
-    <img src="https://img.shields.io/badge/Gmail-EA4335?style=flat&logo=gmail&logoColor=white" alt="Gmail" height="30" />
-  </a>
   <a href="https://www.hackerrank.com/profile/delvanmucheru" target="_blank">
     <img src="https://img.shields.io/badge/-Hackerrank-00EA64?style=flat&logo=HackerRank&logoColor=white" alt="HackerRank" height="30" />
   </a>
