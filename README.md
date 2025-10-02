@@ -2,7 +2,7 @@
 <h3 align="left">✨ Backend Engineer | Python </h3>
 
 <!-- Title above the GIF -->
-<h4 align="center">🔥 How it started vs How it's going 🚀</h4>
+<h4 align="center">🔥 The while True loop of my life 🚀</h4>
 
 <p align="center">
   <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExazcxbG9ramwyMTJycnpiazhsd29naXd1dzNlY2JhcW5pa3E4ZmhvYyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/78XCFBGOlS6keY1Bil/giphy.webp" width="300" style="margin-top: 10px;"/>
