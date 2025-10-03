@@ -44,21 +44,10 @@
   <img src="https://custom-icon-badges.demolab.com/badge/Visual%20Studio%20Code-0078d7.svg?logo=vsc&logoColor=white" alt="VS Code" height="25" style="vertical-align:middle;"/>
 </p>
 
----
-
 ### 💬 Connect with me
-<p align="left">
-  <a href="https://www.hackerrank.com/profile/delvanmucheru" target="_blank">
-    <img src="https://img.shields.io/badge/-Hackerrank-00EA64?style=flat&logo=HackerRank&logoColor=white" alt="Hackerrank" height="25" style="vertical-align:middle;"/>
-  </a>
-  <a href="https://github.com/mucheru-delvan" target="_blank">
-    <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white" alt="GitHub" height="25" style="vertical-align:middle;"/>
-  </a>
-  <a href="https://www.linkedin.com/in/delvan-mucheru/" target="_blank">
-    <img src="https://custom-icon-badges.demolab.com/badge/LinkedIn-0A66C2?logo=linkedin-white&logoColor=fff" alt="LinkedIn" height="25" style="vertical-align:middle;"/>
-  </a>
-</p>
+[![Hackerrank](https://img.shields.io/badge/-Hackerrank-00EA64?style=flat&logo=HackerRank&logoColor=white)](https://www.hackerrank.com/profile/delvanmucheru)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/mucheru-delvan)
+[![LinkedIn](https://custom-icon-badges.demolab.com/badge/LinkedIn-0A66C2?logo=linkedin-white&logoColor=fff)](https://www.linkedin.com/in/delvan-mucheru/)
 
----
 
 
