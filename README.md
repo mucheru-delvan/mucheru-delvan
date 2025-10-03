@@ -16,8 +16,8 @@
 
 ---
 
-### 🎓 About Me
-- Pursuing **Microprocessor Technology & Instrumentation** at **University of Nairobi**  
+### About Me
+- 🎓 Pursuing **Microprocessor Technology & Instrumentation** at **University of Nairobi**  
 - 🔭 Strengthening my backend skills through **Python and real-world projects**  
 - 🌱 Building **robust APIs and scalable server-side applications**  
 - 👯 Looking to collaborate on **open-source Python projects and backend systems**  
