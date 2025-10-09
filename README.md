@@ -1,14 +1,12 @@
-<div align="center">
-
 # Hi 👋, I'm Delvan Mucheru
 
-### 💫 About Me:
+💫 About Me:
 
-*I'm a third year student with a curious mind of exploring the realms of coding, building backend systems, and transforming ideas into functional applications. Currently diving deep into Python and backend technologies while pursuing my passion for creating robust, scalable solutions.*
+*I'm a third year student exploring the realms of coding, building robust systems, and transforming ideas into functional applications.*
 
 [![Profile Views](https://komarev.com/ghpvc/?username=mucheru-delvan&label=Profile%20views&color=0e75b6&style=flat)](https://github.com/mucheru-delvan)
 
-</div>
+---
 
 ---
 
@@ -68,5 +66,3 @@
 </div>
 
 ---
-
-
