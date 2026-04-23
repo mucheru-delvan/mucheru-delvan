@@ -31,11 +31,7 @@ I'm a third-year student at the University of Nairobi exploring the realms of co
 
 ---
 
-## 🛠️ Technical Skills
-
----
-
-## 🛠️ Technical Skills
+## 🧠 Technical Skills
 
 ### Languages
 
@@ -54,7 +50,7 @@ I'm a third-year student at the University of Nairobi exploring the realms of co
 
 ---
 
-## Connect With Me
+## 📫 Connect With Me
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-000000?style=for-the-badge\&logo=linkedin)](https://www.linkedin.com/in/delvan-mucheru/)
 [![GitHub](https://img.shields.io/badge/GitHub-000000?style=for-the-badge\&logo=github)](https://github.com/mucheru-delvan)
