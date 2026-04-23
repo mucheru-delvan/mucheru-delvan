@@ -33,14 +33,14 @@ I'm a third-year student at the University of Nairobi exploring the realms of co
 
 ## 🧠 Technical Skills
 
-### Languages
+**Languages**
 
 ![Python](https://img.shields.io/badge/Python-000000?style=for-the-badge\&logo=python)
 ![HTML5](https://img.shields.io/badge/HTML5-000000?style=for-the-badge\&logo=html5)
 ![CSS3](https://img.shields.io/badge/CSS3-000000?style=for-the-badge\&logo=css3)
 ![SQL](https://img.shields.io/badge/SQL-000000?style=for-the-badge\&logo=sqlite)
 
-### Frameworks / Libraries & Tools
+**Frameworks / Libraries & Tools**
 
 ![Django](https://img.shields.io/badge/Django-000000?style=for-the-badge\&logo=django)
 ![FastAPI](https://img.shields.io/badge/FastAPI-000000?style=for-the-badge\&logo=fastapi)
