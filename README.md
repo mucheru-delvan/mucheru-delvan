@@ -1,6 +1,6 @@
 # Hi 👋, I'm Delvan Mucheru
 ## 💫 About Me:
-I'm a third-year student at the University of Nairobi exploring the realms of coding, building robust systems, and transforming ideas into functional applications.
+I'm a post graduate student at the University of Nairobi exploring the realms of coding, building robust systems, and transforming ideas into functional applications.
 
 [![Profile Views](https://komarev.com/ghpvc/?username=mucheru-delvan&label=Profile%20views&color=0e75b6&style=flat)](https://github.com/mucheru-delvan)
 
