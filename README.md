@@ -1,4 +1,4 @@
-
+```bash
 print_info() {
     prin "\n"
 
@@ -45,3 +45,4 @@ print_info() {
 
     prin "\n"
 }
+```
