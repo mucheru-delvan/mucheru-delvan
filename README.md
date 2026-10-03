@@ -22,7 +22,6 @@ Year: Fourth Year
 Location: Nairobi, Kenya
 Focus: Backend Development
 Building: Robust APIs & Scalable Apps
-Languages: Python · HTML5 · CSS3 · SQL
 Frameworks: Django · FastAPI
 Tools: Git · Ubuntu · VS Code
 Open To: Open-source Python Projects
