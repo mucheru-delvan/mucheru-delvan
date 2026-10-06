@@ -27,27 +27,28 @@ text, tspan {white-space: pre;}
 <tspan x="15" y="170">  @@@$L               |$@@@$$l$@@@@$F          </tspan>
 <tspan x="15" y="190"> ]@@@@L ,@@$@@@@L  ,l@$$$$$$$$$@@@@@           </tspan>
 <tspan x="15" y="210">  %$@@@$}',,gg@||@@@@l@g@ggg|l$&amp;$@@$       </tspan>
-<text x="15" y="230" fill="#24292f" font-family="DejaVu Sans Mono" font-size="12">⡏⠉⠉⠉⠉⠉⠉⠋⠉⠉⠉⠉⠉⠉⠋⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠙⠉⠉⠉⠹
-⡇⢸⣿⡟⠛⢿⣷⠀⢸⣿⡟⠛⢿⣷⡄⢸⣿⡇⠀⢸⣿⡇⢸⣿⡇⠀⢸⣿⡇⠀
-⡇⢸⣿⣧⣤⣾⠿⠀⢸⣿⣇⣀⣸⡿⠃⢸⣿⡇⠀⢸⣿⡇⢸⣿⣇⣀⣸⣿⡇⠀
-⡇⢸⣿⡏⠉⢹⣿⡆⢸⣿⡟⠛⢻⣷⡄⢸⣿⡇⠀⢸⣿⡇⢸⣿⡏⠉⢹⣿⡇⠀
-⡇⢸⣿⣧⣤⣼⡿⠃⢸⣿⡇⠀⢸⣿⡇⠸⣿⣧⣤⣼⡿⠁⢸⣿⡇⠀⢸⣿⡇⠀
-⣇⣀⣀⣀⣀⣀⣀⣀⣄⣀⣀⣀⣀⣀⣀⣀⣠⣀⡈⠉⣁⣀⣄⣀⣀⣀⣠⣀⣀⣀⣰
-⣇⣿⠘⣿⣿⣿⣿⡿⡿⣟⣟⢟⢟⢝⠵⡝⣿⡿⢂⣼⣿⣷⣌⠩⡫⡻⣝⠹⢿⣿⣷
-⡆⣿⣆⠱⣝⡵⣝⢅⠙⣿⢕⢕⢕⢕⢝⣥⢒⠅⣿⣿⣿⡿⣳⣌⠪⡪⣡⢑⢝⣇
-⡆⣿⣿⣦⠹⣳⣳⣕⢅⠈⢗⢕⢕⢕⢕⢕⢈⢆⠟⠋⠉⠁⠉⠉⠁⠈⠼⢐⢕⢽
-⡗⢰⣶⣶⣦⣝⢝⢕⢕⠅⡆⢕⢕⢕⢕⢕⣴⠏⣠⡶⠛⡉⡉⡛⢶⣦⡀⠐⣕⢕
-⡝⡄⢻⢟⣿⣿⣷⣕⣕⣅⣿⣔⣕⣵⣵⣿⣿⢠⣿⢠⣮⡈⣌⠨⠅⠹⣷⡀⢱⢕
-⡝⡵⠟⠈⢀⣀⣀⡀⠉⢿⣿⣿⣿⣿⣿⣿⣿⣿⣼⣿⢈⡋⠴⢿⡟⣡⡇⣿⡇⡀⢕
-⡝⠁⣠⣾⠟⡉⡉⡉⠻⣦⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠸⣿⣦⣥⣿⡇⡿⣰⢗⢄
-⠁⢰⣿⡏⣴⣌⠈⣌⠡⠈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣬⣉⣉⣁⣄⢖⢕⢕⢕
-⡀⢻⣿⡇⢙⠁⠴⢿⡟⣡⡆⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣵⣵⣿
-⡻⣄⣻⣿⣌⠘⢿⣷⣥⣿⠇⣿⣿⣿⣿⣿⣿⣿⣛⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣷⢄⠻⣿⣟⠿⠦⠍⠉⣡⣾⣿⣿⣿⣿⣿⣿⣿⣸⣿⣦⠙⣿⣿⣿⣿⣿⣿⣿⣿⠟
-⡕⡑⣑⣈⣻⢗⢟⢞⢝⣻⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⠿⠃⣿⣿⣿⣿⣿⣿⡿⠁⣠
-⡝⡵⡈⢟⢕⢕⢕⢕⣵⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣿⣿⣿⣿⣿⠿⠋⣀⣈⠙
-⡝⡵⡕⡀⠑⠳⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⢉⡠⡲⡫⡪⡪⡣</text>
-</text>
+<image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4AAAApbCAYAAAA2jMfqAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAGYktHRAD/AP8A/6C9p5MAAIAASURBVHja7N13nFTV/f/x97kzs50tVIVlGysgKBYULFjB3qNiCXaxN2JJbLHEEktMYpoppvy+acbYuyCgUqQ36dvpLGyvM3Pv+f2xaIyx7MKWKa/n48FDZGHmnve5d+bc+cw5RwIAAAAAAAAAAAAAxARDBAAAAAAARJ+RI0cm1NfXpwYCgTRfKBRwbSBFJpQoYxKt9aUYx/Mbz/SSZKyUuetTgAxrrWOMTTPGBKy1KTImUZ4S5SjlG5/Q
+U4KMTe3wgRpT/dlvrbWtxpimz39mTb0xNtz2M+Naa+s+/2cyTZJarfEaJbXI+mqNcZuM1OJYW2Os
+bWk2prmioqJGkuWMAAAAAIDP7qcAAAAAAEB38mVnZ2ekOE6mdZx0GZPuuiZdxk03xvSynjIlZciY
+dCMvXTK9JKVLJkOymW2/Vy9JSUT5uVZJTZJqjdRiZRolWy+pRUb1xqpBVrXWmCpJ1VZelZGqHWOq
+XMep9rf4q9ZtXlctySVKAAAAANGOAjAAAAAAAHtg4MCBKUlJSX0VUn/juP2MdfrKsX2tNX0lr7+s
+6Sdj+hrZPlbqJ6kPqUWsWknVkqokUy1jq+SpykjV1phd/7U7ZO1215jN4XB428aNG5uJDQAAAEAk
+oQAMAAAAAMCXjBw5MqGxsXGg4znZxvEGGWmgZzXYyPaVTF/J9pNMf0l9pW9ZOhmxrs5Imz2r7cZo
+s4y2GWmblTbL2u2e42z2PG97eXn5djHDGAAAAEA3oAAMAAAAAIgrBQUFGU44PEg+X7a1dqCsGSxr
+Bxpjs63MIEkDJQ0gKXQyT9L2Xb82yWq7jK0wUrlrnQrjN+We51WUlZW1EBUAAACAPUEBGAAAAAAQ
+U/e5Q7OzB4adhHwjW2AcW2ClfFllS9rbSjlGSiUmRLCtVio3RhWytlzWqTBSmetTubW2oqysrIaI
+AAAAAHzjjTERAAAAAACiybBhw3oFg8F8x9oCI+VbawskUyApf9evJFJCDKuVUYWxttxKZZJTYaxK
+XZ/WhUKh9exJDAAAAIACMAAAAAAg4uTl5e3ls3ZfIxVYOQVS20xeIxVI6kdCwFeykjZIZr2sXW8c
+rfOsXSvXtz5rQFbZokWLQkQEAAAAxD4KwAAAAACAHjNs8OCBIRMYIXkjjaMRapvNu7/YgxfoZDYs
+mQrJlsiYEuupxJFZ5chdua6iokxtexQDAAAAiAEUgAEAAAAAXSo7Ozs52e8f5knDjbSvlfaV1TBJ
+wyQlkhDQ45qMtN4arZM1y2Xspz7PW76uoqJUbbOKAQAAAEQRCsAAAAAAgE4xcuTIhNaGhv08Yw4w
+1oyU7L6ShkvKk+SQEBBtbIOVWWlkl8uaT2XsikA4vHzNpk07yQYAAACIXBSAAQAAAAAdVlBQkKGw
+9pe80W1LN5uRkh0tKYl0gJhXLZlVMnaRPLPSyqxqCbcs3rx5cxPRAAAAAD2PAjAAAAAA4BvvG4dk
+DxliHO9Aa3SgkXeAteYAGQ0mGgD/YcNGpsgarZC1y2TMokAotIDZwgAAAEAP3MgTAQAAAABAkkaP
+Hh2o3l59gDH2oLZirw6QChJvUgHwO6wUqkxWiBrFhhjF8rvX1xUVFRHMgAAAEDXoQAMAAAAAHFq
+2ODBA13jHy3HHmmtGSfZgyUlkwyALrZFRrOsp9mSs4jlowEAAIDORQEYAAAAAOLAyH4j05qTmw/c
+tWfvkbI6WtIAkgHQ82xYMusku8has0hyFnmOt7CsrKyFbAAAAICOowAMAAAAALHHl5+fv5/jaqwx
+" x="15" y="230" width="200" height="100"/>
 <tspan x="15" y="330">      ''   '|L++=*****""*"||` L|</tspan>
 <tspan x="15" y="350">        |           ,,      |||F               </tspan>
 <tspan x="15" y="370">        '         |||||||| ||l$                </tspan>
@@ -87,27 +88,21 @@ text, tspan {white-space: pre;}
 <tspan x="390" y="510" class="cc">. </tspan><tspan class="key">Commits</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">0</tspan>
 <tspan x="390" y="530" class="cc">. </tspan><tspan class="key">Lines of Code</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">440 ( <tspan class="addColor" id="loc_add">514</tspan><tspan class="addColor">++</tspan>, <tspan id="loc_del_dots"> </tspan><tspan class="delColor" id="loc_del">74</tspan><tspan class="delColor">--</tspan> )</tspan>
 <tspan x="390" y="550">- GitHub Stats</tspan> -——————————————————————————————————————————————-—-
-<tspan x="390" y="570" class="cc">. </tspan><tspan class="key">Repos</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">10</tspan>
-<tspan x="390" y="590" class="cc">. </tspan><tspan class="key">Stars</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">0</tspan>
-<tspan x="390" y="610" class="cc">. </tspan><tspan class="key">Followers</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">4</tspan>
-<tspan x="390" y="630" class="cc">. </tspan><tspan class="key">Commits</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">0</tspan>
-<tspan x="390" y="650" class="cc">. </tspan><tspan class="key">Lines of Code</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">440 ( <tspan class="addColor" id="loc_add">514</tspan><tspan class="addColor">++</tspan>, <tspan id="loc_del_dots"> </tspan><tspan class="delColor" id="loc_del">74</tspan><tspan class="delColor">--</tspan> )</tspan>
+<tspan x="390" y="570" class="cc">. </tspan><tspan class="key">Repos</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">8</tspan>
+<tspan x="390" y="590" class="cc">. </tspan><tspan class="key">Stars</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">45</tspan>
+<tspan x="390" y="610" class="cc">. </tspan><tspan class="key">Followers</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">12</tspan>
+<tspan x="390" y="630" class="cc">. </tspan><tspan class="key">Commits</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">287</tspan>
+<tspan x="390" y="650" class="cc">. </tspan><tspan class="key">Lines of Code</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">12,850 ( <tspan class="addColor" id="loc_add">15,034</tspan><tspan class="addColor">++</tspan>, <tspan id="loc_del_dots"> </tspan><tspan class="delColor" id="loc_del">2,184</tspan><tspan class="delColor">--</tspan> )</tspan>
 <tspan x="390" y="670">- GitHub Stats</tspan> -——————————————————————————————————————————————-—-
 <tspan x="390" y="690" class="cc">. </tspan><tspan class="key">Repos</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">8</tspan>
 <tspan x="390" y="710" class="cc">. </tspan><tspan class="key">Stars</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">45</tspan>
 <tspan x="390" y="730" class="cc">. </tspan><tspan class="key">Followers</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">12</tspan>
 <tspan x="390" y="750" class="cc">. </tspan><tspan class="key">Commits</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">287</tspan>
 <tspan x="390" y="770" class="cc">. </tspan><tspan class="key">Lines of Code</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">12,850 ( <tspan class="addColor" id="loc_add">15,034</tspan><tspan class="addColor">++</tspan>, <tspan id="loc_del_dots"> </tspan><tspan class="delColor" id="loc_del">2,184</tspan><tspan class="delColor">--</tspan> )</tspan>
-<tspan x="390" y="790">- GitHub Stats</tspan> -——————————————————————————————————————————————-—-
-<tspan x="390" y="810" class="cc">. </tspan><tspan class="key">Repos</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">8</tspan>
-<tspan x="390" y="830" class="cc">. </tspan><tspan class="key">Stars</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">45</tspan>
-<tspan x="390" y="850" class="cc">. </tspan><tspan class="key">Followers</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">12</tspan>
-<tspan x="390" y="870" class="cc">. </tspan><tspan class="key">Commits</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">287</tspan>
-<tspan x="390" y="890" class="cc">. </tspan><tspan class="key">Lines of Code</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">12,850 ( <tspan class="addColor" id="loc_add">15,034</tspan><tspan class="addColor">++</tspan>, <tspan id="loc_del_dots"> </tspan><tspan class="delColor" id="loc_del">2,184</tspan><tspan class="delColor">--</tspan> )</tspan>
-<tspan x="390" y="910">- Interests</tspan> -—————————————————————————————————————————-—-
-<tspan x="390" y="930" class="cc">. </tspan><tspan class="key">Primary</tspan>:<tspan class="cc"> ........ </tspan><tspan class="value">Backend</tspan> | <tspan class="key">Secondary</tspan>:<tspan class="cc"> .... </tspan><tspan class="value">Open Source</tspan>
-<tspan x="390" y="950" class="cc">. </tspan><tspan class="key">Open To</tspan>:<tspan class="cc"> .... </tspan><tspan class="value">Open-source Python Projects</tspan> | <tspan class="key">Also</tspan>:<tspan class="cc"> .. </tspan><tspan class="value">Backend Systems</tspan>
-<tspan x="390" y="970">- Fun Fact</tspan> -—————————————————————————————————————————-—-
-<tspan x="390" y="990" class="cc">. </tspan><tspan class="key">Micro-level circuits</tspan>:<tspan class="cc"> .. </tspan><tspan class="value">→ Macro-level systems</tspan>
+<tspan x="390" y="790">- Interests</tspan> -—————————————————————————————————————————-—-
+<tspan x="390" y="810" class="cc">. </tspan><tspan class="key">Primary</tspan>:<tspan class="cc"> ........ </tspan><tspan class="value">Backend</tspan> | <tspan class="key">Secondary</tspan>:<tspan class="cc"> .... </tspan><tspan class="value">Open Source</tspan>
+<tspan x="390" y="830" class="cc">. </tspan><tspan class="key">Open To</tspan>:<tspan class="cc"> .... </tspan><tspan class="value">Open-source Python Projects</tspan> | <tspan class="key">Also</tspan>:<tspan class="cc"> .. </tspan><tspan class="value">Backend Systems</tspan>
+<tspan x="390" y="850">- Fun Fact</tspan> -—————————————————————————————————————————-—-
+<tspan x="390" y="870" class="cc">. </tspan><tspan class="key">Micro-level circuits</tspan>:<tspan class="cc"> .. </tspan><tspan class="value">→ Macro-level systems</tspan>
 </text>
 </svg>
