@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" font-family="ConsolasFallback,Consolas,monospace" width="985px" height="530px" font-size="16px">
+<style>
+@font-face {
+src: local('Consolas'), local('Consolas Bold');
+font-family: 'ConsolasFallback';
+font-display: swap;
+-webkit-size-adjust: 109%;
+size-adjust: 109%;
+}
+.key {fill: #953800;}
+.value {fill: #0a3069;}
+.addColor {fill: #1a7f37;}
+.delColor {fill: #cf222e;}
+.cc {fill: #c2cfde;}
+text, tspan {white-space: pre;}
+</style>
+<rect width="985px" height="530px" fill="#f6f8fa" rx="15"/>
+<text x="15" y="30" fill="#24292f" class="ascii">
+<tspan x="15" y="30">            ;;,, ,;,|g;~,,                      </tspan>
+<tspan x="15" y="50">         ,g@@@@@@l&amp;$$$@|,w$$@gy,            </tspan>
+<tspan x="15" y="70">        $@@@@@@@@@@$@@@@@@@@$$MW$k              </tspan>
+<tspan x="15" y="90">       $$@@@@@@B@@@@@@@@@@@@@$@$$g,$            </tspan>
+<tspan x="15" y="110">     g@llM**'''||%@@@@@$@@$@@@@@@@L$&amp;      </tspan>
+<tspan x="15" y="130">   @$&amp;$F         ''T%M$@@@@@@@@@@@$@$@     </tspan>
+<tspan x="15" y="150">  @@@@F              ']@@@@@@$$@$@@@@          </tspan>
+<tspan x="15" y="170">  @@@$L               |$@@@$$l$@@@@$F          </tspan>
+<tspan x="15" y="190"> ]@@@@L ,@@$@@@@L  ,l@$$$$$$$$$@@@@@           </tspan>
+<tspan x="15" y="210">  %$@@@$}',,gg@||@@@@l@g@ggg|l$&amp;$@@$       </tspan>
+<tspan x="15" y="230">  ]@@@@@'"*TTTTT'F  ]Wl|||''"'$]@@@@ </tspan>
+<tspan x="15" y="250">   $$@M$       ,#    ]gg,,,,,.r'$@$            </tspan>
+<tspan x="15" y="270">    &amp;$L        ' ,, ,,,'T''`    $$L        </tspan>
+<tspan x="15" y="290">     lL         T"||||!   `-    l"'  </tspan>
+<tspan x="15" y="310">     ' |        '||l||||"|L|  L `         </tspan>
+<tspan x="15" y="330">      ''   '|L++=*****""*"||` L|</tspan>
+<tspan x="15" y="350">        |           ,,      |||F               </tspan>
+<tspan x="15" y="370">        '         |||||||| ||l$                </tspan>
+<tspan x="15" y="390">          !                |l&amp;L            </tspan>
+<tspan x="15" y="410">           '!,       |||,||@M|L                </tspan>
+<tspan x="15" y="430">            ||l&amp;$@$$@$$$@$MT|||            </tspan>
+<tspan x="15" y="450">         |    |||lll$$llll|||||L               </tspan>
+<tspan x="15" y="470">    ,;y@        ||||||l||@|||||l               </tspan>
+<tspan x="15" y="490">,g$@$$$@         |||||||||||||||| $g,          </tspan>
+<tspan x="15" y="510">$$$$$$$$@    |    |||||||||||||| |$$@g         </tspan>
+</text>
+<text x="390" y="30" fill="#24292f">
+<tspan x="390" y="30">delvan@mucheru</tspan> -———————————————————————————————————————————-—-
+<tspan x="390" y="50" class="cc">. </tspan><tspan class="key">OS</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">Ubuntu, Windows 11, Linux</tspan>
+<tspan x="390" y="70" class="cc">. </tspan><tspan class="key">Host</tspan>:<tspan class="cc"> ............................. </tspan><tspan class="value">University of Nairobi</tspan>
+<tspan x="390" y="90" class="cc">. </tspan><tspan class="key">Degree</tspan>:<tspan class="cc"> ...... </tspan><tspan class="value">BSc Microprocessor Technology</tspan>
+<tspan x="390" y="110" class="cc">. </tspan><tspan class="key">Year</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">Fourth Year</tspan>
+<tspan x="390" y="130" class="cc">. </tspan><tspan class="key">Location</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">Nairobi, Kenya</tspan>
+<tspan x="390" y="150" class="cc">. </tspan>
+<tspan x="390" y="170" class="cc">. </tspan><tspan class="key">Focus</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value">Backend Development</tspan>
+<tspan x="390" y="190" class="cc">. </tspan><tspan class="key">Building</tspan>:<tspan class="cc"> ....... </tspan><tspan class="value">Robust APIs &amp; Scalable Apps</tspan>
+<tspan x="390" y="210" class="cc">. </tspan>
+<tspan x="390" y="230" class="cc">. </tspan><tspan class="key">Languages</tspan>.<tspan class="key">Programming</tspan>:<tspan class="cc"> ..... </tspan><tspan class="value">Python, JavaScript, SQL</tspan>
+<tspan x="390" y="250" class="cc">. </tspan><tspan class="key">Languages</tspan>.<tspan class="key">Markup/Style</tspan>:<tspan class="cc"> .... </tspan><tspan class="value">HTML5, CSS3</tspan>
+<tspan x="390" y="270" class="cc">. </tspan>
+<tspan x="390" y="290" class="cc">. </tspan><tspan class="key">Frameworks</tspan>:<tspan class="cc"> .... </tspan><tspan class="value">Django, FastAPI</tspan>
+<tspan x="390" y="310" class="cc">. </tspan><tspan class="key">Tools</tspan>:<tspan class="cc"> .............. </tspan><tspan class="value">Git, Ubuntu, VS Code</tspan>
+<tspan x="390" y="330">- Contact</tspan> -——————————————————————————————————————————————-—-
+<tspan x="390" y="350" class="cc">. </tspan><tspan class="key">Email</tspan>.<tspan class="key">Personal</tspan>:<tspan class="cc"> ..................... </tspan><tspan class="value">mkdelvan9@gmail.com</tspan>
+<tspan x="390" y="370" class="cc">. </tspan><tspan class="key">LinkedIn</tspan>:<tspan class="cc"> .................................... </tspan><tspan class="value">delvan-mucheru</tspan>
+<tspan x="390" y="390" class="cc">. </tspan><tspan class="key">GitHub</tspan>:<tspan class="cc"> ..................................... </tspan><tspan class="value">mucheru-delvan</tspan>
+<tspan x="390" y="410" class="cc">. </tspan><tspan class="key">HackerRank</tspan>:<tspan class="cc"> ........................................ </tspan><tspan class="value">delvanmucheru</tspan>
+<tspan x="390" y="430">- Interests</tspan> -—————————————————————————————————————————-—-
+<tspan x="390" y="450" class="cc">. </tspan><tspan class="key">Primary</tspan>:<tspan class="cc"> ........ </tspan><tspan class="value">Backend</tspan> | <tspan class="key">Secondary</tspan>:<tspan class="cc"> .... </tspan><tspan class="value">Open Source</tspan>
+<tspan x="390" y="470" class="cc">. </tspan><tspan class="key">Open To</tspan>:<tspan class="cc"> .... </tspan><tspan class="value">Open-source Python Projects</tspan> | <tspan class="key">Also</tspan>:<tspan class="cc"> .. </tspan><tspan class="value">Backend Systems</tspan>
+<tspan x="390" y="490">- Fun Fact</tspan> -—————————————————————————————————————————-—-
+<tspan x="390" y="510" class="cc">. </tspan><tspan class="key">Micro-level circuits</tspan>:<tspan class="cc"> .. </tspan><tspan class="value">→ Macro-level systems</tspan>
+</text>
+</svg>
