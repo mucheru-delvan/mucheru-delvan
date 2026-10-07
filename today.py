@@ -575,50 +575,47 @@ def generate_svg_loc(loc_data):
         f'<tspan class="delColor">--</tspan> )'
     )
 
-
 def update_svg_with_stats_text(svg_content, stats):
     """
     Replace the existing GitHub Stats values
     and replace Year with Uptime.
     """
 
-    lines = svg_content.splitlines()
-
     uptime = stats["uptime"]
 
     # ---------------------------------------------------------
-    # UPTIME
+    # Replace the actual uptime value first.
+    # This works for both SVG files.
     # ---------------------------------------------------------
 
-    for index, line in enumerate(lines):
-
-        # Dark mode:
-        # id="tspan138">Year</tspan>
-        if 'id="tspan138">Year</tspan>' in line:
-            lines[index] = line.replace(
-                'id="tspan138">Year</tspan>',
-                'id="tspan138">Uptime</tspan>',
-            )
-
-        # Light mode:
-        # . Year</tspan>: ...................................
-        if ". Year</tspan>:" in line:
-            lines[index] = line.replace(
-                ". Year</tspan>:",
-                ". Uptime</tspan>:",
-            )
-
-        # Both SVGs contain:
-        # Fourth Year
-        if "Fourth Year" in line:
-            lines[index] = line.replace(
-                "Fourth Year",
-                uptime,
-            )
+    svg_content = svg_content.replace(
+        "Fourth Year",
+        uptime,
+    )
 
     # ---------------------------------------------------------
-    # GITHUB STATISTICS
+    # Replace the Year label.
     # ---------------------------------------------------------
+
+    # Light mode SVG:
+    # . Year</tspan>: ............Fourth Year<tspan
+    svg_content = svg_content.replace(
+        ". Year</tspan>:",
+        ". Uptime</tspan>:",
+    )
+
+    # Dark mode SVG:
+    # id="tspan138">Year</tspan>
+    svg_content = svg_content.replace(
+        'id="tspan138">Year</tspan>',
+        'id="tspan138">Uptime</tspan>',
+    )
+
+    # ---------------------------------------------------------
+    # Existing GitHub statistics
+    # ---------------------------------------------------------
+
+    lines = svg_content.splitlines()
 
     replacements = {
         "Repos": str(stats["repos"]),
