@@ -81,6 +81,38 @@ def ascii_block():
     return "\n".join(output)
 
 
+def profile_line(x, y, content):
+    """
+    Create a complete terminal line with explicit x/y positioning.
+
+    The outer tspan controls the position.
+    Nested tspans are used only for styling.
+    """
+
+    return f'''    <tspan x="{x}" y="{y}">
+{content}
+    </tspan>'''
+
+
+def styled_line(x, y, prefix, key, value):
+    """
+    Create a profile line with explicit positioning
+    and separate colors for the key and value.
+    """
+
+    return f'''    <tspan x="{x}" y="{y}"><tspan class="cc">{esc(prefix)}</tspan><tspan class="key">{esc(key)}</tspan><tspan class="cc">: </tspan><tspan class="value">{esc(value)}</tspan></tspan>'''
+
+
+def bullet_line(x, y, text, style="key"):
+    """
+    Create a bullet-style profile line.
+
+    The complete line gets explicit x/y positioning.
+    """
+
+    return f'''    <tspan x="{x}" y="{y}"><tspan class="cc">. </tspan><tspan class="{style}">{esc(text)}</tspan></tspan>'''
+
+
 def profile_svg(dark=True):
     """Build a clean fixed-size profile SVG."""
 
@@ -187,148 +219,68 @@ def profile_svg(dark=True):
 
     <!-- Header -->
 
-    <tspan x="500" y="35">delvan@mucheru</tspan>
+    <tspan x="500" y="35"><tspan class="cc">delvan@mucheru</tspan></tspan>
 
 
     <!-- System -->
 
-    <tspan x="500" y="60">. </tspan>
-    <tspan class="key">OS</tspan>
-    <tspan>: </tspan>
-    <tspan class="value">Ubuntu Linux</tspan>
+{styled_line(500, 60, ". ", "OS", "Ubuntu Linux")}
+{styled_line(500, 78, ". ", "Host", "HP")}
+{styled_line(500, 96, ". ", "Degree", "BSc Microprocessor Technology")}
 
-    <tspan x="500" y="78">. </tspan>
-    <tspan class="key">Host</tspan>
-    <tspan>: </tspan>
-    <tspan class="value">HP</tspan>
+    <tspan x="500" y="114"><tspan class="cc">. </tspan><tspan class="key">Uptime</tspan><tspan class="cc">: </tspan><tspan class="value" id="uptime_data">21 years, 7 months, 0 days</tspan></tspan>
 
-    <tspan x="500" y="96">. </tspan>
-    <tspan class="key">Degree</tspan>
-    <tspan>: </tspan>
-    <tspan class="value">BSc Microprocessor Technology</tspan>
-
-    <tspan x="500" y="114">. </tspan>
-    <tspan class="key">Uptime</tspan>
-    <tspan>: </tspan>
-    <tspan
-        class="value"
-        id="uptime_data"
-    >21 years, 7 months, 0 days</tspan>
-
-    <tspan x="500" y="132">. </tspan>
-    <tspan class="key">Focus</tspan>
-    <tspan>: </tspan>
-    <tspan class="value">Robust APIs &amp; Scalable Apps</tspan>
+{styled_line(500, 132, ". ", "Focus", "Robust APIs & Scalable Apps")}
 
 
     <!-- Programming Languages -->
 
-    <tspan x="500" y="165">- Languages</tspan>
+    <tspan x="500" y="165"><tspan class="cc">- </tspan><tspan class="key">Languages</tspan></tspan>
 
-    <tspan x="500" y="183">. </tspan>
-    <tspan class="key">Java</tspan>
-
-    <tspan x="500" y="201">. </tspan>
-    <tspan class="key">JavaScript</tspan>
-
-    <tspan x="500" y="219">. </tspan>
-    <tspan class="key">Python</tspan>
-
-    <tspan x="500" y="237">. </tspan>
-    <tspan class="key">SQL</tspan>
+{bullet_line(500, 183, "Java")}
+{bullet_line(500, 201, "JavaScript")}
+{bullet_line(500, 219, "Python")}
+{bullet_line(500, 237, "SQL")}
 
 
     <!-- Contact -->
 
-    <tspan x="500" y="270">- Contact</tspan>
+    <tspan x="500" y="270"><tspan class="cc">- </tspan><tspan class="key">Contact</tspan></tspan>
 
-    <tspan x="500" y="288">. </tspan>
-    <tspan class="key">Email</tspan>
-    <tspan>: </tspan>
-    <tspan class="value">mkdelvan9@gmail.com</tspan>
-
-    <tspan x="500" y="306">. </tspan>
-    <tspan class="key">LinkedIn</tspan>
-    <tspan>: </tspan>
-    <tspan class="value">delvan-mucheru</tspan>
-
-    <tspan x="500" y="324">. </tspan>
-    <tspan class="key">GitHub</tspan>
-    <tspan>: </tspan>
-    <tspan class="value">mucheru-delvan</tspan>
-
-    <tspan x="500" y="342">. </tspan>
-    <tspan class="key">HackerRank</tspan>
-    <tspan>: </tspan>
-    <tspan class="value">delvanmucheru</tspan>
+{styled_line(500, 288, ". ", "Email", "mkdelvan9@gmail.com")}
+{styled_line(500, 306, ". ", "LinkedIn", "delvan-mucheru")}
+{styled_line(500, 324, ". ", "GitHub", "mucheru-delvan")}
+{styled_line(500, 342, ". ", "HackerRank", "delvanmucheru")}
 
 
     <!-- GitHub Stats -->
 
-    <tspan x="500" y="375">- GitHub Stats</tspan>
+    <tspan x="500" y="375"><tspan class="cc">- </tspan><tspan class="key">GitHub Stats</tspan></tspan>
 
-    <tspan x="500" y="393">. </tspan>
-    <tspan class="key">Repos</tspan>
-    <tspan>: </tspan>
-    <tspan
-        class="value"
-        id="repo_data"
-    >10</tspan>
+    <tspan x="500" y="393"><tspan class="cc">. </tspan><tspan class="key">Repos</tspan><tspan class="cc">: </tspan><tspan class="value" id="repo_data">10</tspan></tspan>
 
-    <tspan x="500" y="411">. </tspan>
-    <tspan class="key">Stars</tspan>
-    <tspan>: </tspan>
-    <tspan
-        class="value"
-        id="star_data"
-    >4</tspan>
+    <tspan x="500" y="411"><tspan class="cc">. </tspan><tspan class="key">Stars</tspan><tspan class="cc">: </tspan><tspan class="value" id="star_data">4</tspan></tspan>
 
-    <tspan x="500" y="429">. </tspan>
-    <tspan class="key">Followers</tspan>
-    <tspan>: </tspan>
-    <tspan
-        class="value"
-        id="follower_data"
-    >4</tspan>
+    <tspan x="500" y="429"><tspan class="cc">. </tspan><tspan class="key">Followers</tspan><tspan class="cc">: </tspan><tspan class="value" id="follower_data">4</tspan></tspan>
 
-    <tspan x="500" y="447">. </tspan>
-    <tspan class="key">Commits</tspan>
-    <tspan>: </tspan>
-    <tspan
-        class="value"
-        id="commit_data"
-    >439</tspan>
+    <tspan x="500" y="447"><tspan class="cc">. </tspan><tspan class="key">Commits</tspan><tspan class="cc">: </tspan><tspan class="value" id="commit_data">439</tspan></tspan>
 
-    <tspan x="500" y="465">. </tspan>
-    <tspan class="key">Lines of Code</tspan>
-    <tspan>: </tspan>
-    <tspan
-        class="value"
-        id="loc_data"
-    >915</tspan>
+    <tspan x="500" y="465"><tspan class="cc">. </tspan><tspan class="key">Lines of Code</tspan><tspan class="cc">: </tspan><tspan class="value" id="loc_data">915</tspan></tspan>
 
 
     <!-- Interests -->
 
-    <tspan x="500" y="498">- Interests</tspan>
+    <tspan x="500" y="498"><tspan class="cc">- </tspan><tspan class="key">Interests</tspan></tspan>
 
-    <tspan x="500" y="516">. </tspan>
-    <tspan class="key">Primary</tspan>
-    <tspan>: </tspan>
-    <tspan class="value">Open-source Python Projects</tspan>
-
-    <tspan x="500" y="534">. </tspan>
-    <tspan class="key">Open To</tspan>
-    <tspan>: </tspan>
-    <tspan class="value">Backend Systems</tspan>
+{styled_line(500, 516, ". ", "Primary", "Open-source Python Projects")}
+{styled_line(500, 534, ". ", "Open To", "Backend Systems")}
 
 
     <!-- Fun Fact -->
 
-    <tspan x="500" y="567">- Fun Fact</tspan>
+    <tspan x="500" y="567"><tspan class="cc">- </tspan><tspan class="key">Fun Fact</tspan></tspan>
 
-    <tspan x="500" y="585">. </tspan>
-    <tspan class="value">Micro-level circuits → Macro-level systems</tspan>
+    <tspan x="500" y="585"><tspan class="cc">. </tspan><tspan class="value">Micro-level circuits → Macro-level systems</tspan></tspan>
 
   </text>
 
@@ -340,8 +292,15 @@ def main():
     light_path = BASE / "light_mode.svg"
     dark_path = BASE / "dark_mode.svg"
 
-    light_path.write_text(profile_svg(dark=False))
-    dark_path.write_text(profile_svg(dark=True))
+    light_path.write_text(
+        profile_svg(dark=False),
+        encoding="utf-8",
+    )
+
+    dark_path.write_text(
+        profile_svg(dark=True),
+        encoding="utf-8",
+    )
 
     print("✓ Rebuilt light_mode.svg")
     print("✓ Rebuilt dark_mode.svg")
@@ -351,6 +310,7 @@ def main():
     print("✓ ASCII font: 10px")
     print("✓ ASCII line height: 14px")
     print("✓ Terminal column: x=500")
+    print("✓ Terminal font: 14px")
     print("✓ Added languages: Java, JavaScript, Python, SQL")
 
 
