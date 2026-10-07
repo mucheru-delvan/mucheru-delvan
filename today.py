@@ -80,7 +80,7 @@ USE_LIVE_DATA = is_token_valid(TOKEN)
 
 def calculate_uptime(birthday):
     """
-    Returns the length of time since I was born.
+    Returns the length of time since i have been coding and teaching computer science.
     """
     birth_date = datetime.datetime.strptime(
         birthday,
