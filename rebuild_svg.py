@@ -1,4 +1,105 @@
-<?xml version="1.0" encoding="UTF-8"?>
+from pathlib import Path
+import re
+
+BASE = Path(__file__).resolve().parent
+SOURCE = BASE / "svg-backup" / "light_mode.svg"
+
+
+def extract_ascii():
+    """Extract the existing ASCII artwork from the original SVG."""
+
+    svg = SOURCE.read_text()
+
+    match = re.search(
+        r'<text[^>]*id="text134"[^>]*>(.*?)</text>',
+        svg,
+        re.DOTALL,
+    )
+
+    if not match:
+        raise RuntimeError(
+            'Could not find the existing ASCII block with id="text134".'
+        )
+
+    block = match.group(1)
+
+    lines = re.findall(
+        r'<tspan[^>]*>(.*?)</tspan>',
+        block,
+        re.DOTALL,
+    )
+
+    if not lines:
+        raise RuntimeError(
+            "ASCII block was found, but no lines were extracted."
+        )
+
+    cleaned = []
+
+    for line in lines:
+        line = line.replace("&amp;", "&")
+        line = line.replace("&lt;", "<")
+        line = line.replace("&gt;", ">")
+        cleaned.append(line)
+
+    return cleaned
+
+
+ASCII = extract_ascii()
+
+
+def esc(text):
+    """Escape text for XML."""
+
+    return (
+        str(text)
+        .replace("&", "&amp;")
+        .replace("<", "&lt;")
+        .replace(">", "&gt;")
+    )
+
+
+def ascii_block():
+    """
+    Render the ASCII artwork as an independent
+    left-hand text block.
+    """
+
+    x = 15
+    y = 50
+    line_height = 14
+
+    output = []
+
+    for index, line in enumerate(ASCII):
+        output.append(
+            f'    <tspan x="{x}" y="{y + index * line_height}">'
+            f'{esc(line)}'
+            f'</tspan>'
+        )
+
+    return "\n".join(output)
+
+
+def profile_svg(dark=True):
+    """Build a clean fixed-size profile SVG."""
+
+    if dark:
+        bg = "#161b22"
+        fg = "#c9d1d9"
+        cc = "#8b949e"
+        key = "#79c0ff"
+        value = "#a5d6ff"
+    else:
+        bg = "#f6f8fa"
+        fg = "#24292f"
+        cc = "#57606a"
+        key = "#0550ae"
+        value = "#0969da"
+
+    ascii_lines = ascii_block()
+
+    return f'''<?xml version="1.0" encoding="UTF-8"?>
 
 <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -10,39 +111,39 @@
 
   <style>
 
-    @font-face {
+    @font-face {{
       font-family: ConsolasFallback;
       src: local("DejaVu Sans Mono");
-    }
+    }}
 
     text,
-    tspan {
+    tspan {{
       white-space: pre;
-    }
+    }}
 
-    .ascii {
+    .ascii {{
       font-family: ConsolasFallback, Consolas, monospace;
       font-size: 10px;
-      fill: #24292f;
-    }
+      fill: {fg};
+    }}
 
-    .terminal {
+    .terminal {{
       font-family: ConsolasFallback, Consolas, monospace;
       font-size: 14px;
-      fill: #24292f;
-    }
+      fill: {fg};
+    }}
 
-    .key {
-      fill: #0550ae;
-    }
+    .key {{
+      fill: {key};
+    }}
 
-    .value {
-      fill: #0969da;
-    }
+    .value {{
+      fill: {value};
+    }}
 
-    .cc {
-      fill: #57606a;
-    }
+    .cc {{
+      fill: {cc};
+    }}
 
   </style>
 
@@ -57,7 +158,7 @@
       width="985"
       height="650"
       rx="15"
-      fill="#f6f8fa"
+      fill="{bg}"
   />
 
 
@@ -70,41 +171,7 @@
       x="15"
       y="50"
   >
-    <tspan x="15" y="50">@@@@@@@@@@@@@@@@@-:.               .     .=*@@@@@@@@@@@@@@@@@@@@@@@@@@</tspan>
-    <tspan x="15" y="64">@@@@@@@@@@@@@@@@:.. .               ..    .=-@@@@@@@@@@@@@@@@@@@@@@@@@</tspan>
-    <tspan x="15" y="78">@@@@@@@@@@@@@@@:..  .                .:::. .:-@@@@@@@@@@@@@@@@@@@@@@@@</tspan>
-    <tspan x="15" y="92">@@@@@@@@@@@@@@:-:...                   . :  ..@@@@@@@@@@@@@@@@@@@@@@@@</tspan>
-    <tspan x="15" y="106">@@@@@@@@@@@@@:=...          ....         -.  :-@@@@@@@@@@@@@@@@@@@@@@@</tspan>
-    <tspan x="15" y="120">@@@@@@@@@@@@@*:.:..   ...:======. ...     .-  %@@@@@@@@@@@@@@@@@@@@@@@</tspan>
-    <tspan x="15" y="134">@@@@@@@@@@@@@%#**=-------=======:..:::.   ..-.+@@@@@@@@@@@@@@@@@@@@@@@</tspan>
-    <tspan x="15" y="148">@@@@@@@@@@@@@@*+==---:-:-----===---:::.    .-*-* -@@@@@@@@@@@@@@@@@@@@</tspan>
-    <tspan x="15" y="162">@@@@@@@@@@@@@@#=---:::::::::::--==-===- :+   ==##+@@@@@@@@@@@@@@@@@@@@</tspan>
-    <tspan x="15" y="176">@@@@@@@@@@@@@@%+---:::::...:..::::-==-.=*:=-  +.@@@@@@@@@@@@@@@@@@@@@@</tspan>
-    <tspan x="15" y="190">@@@@@@@@@@@@@@@#+=----=-==-:-:..:==-:.%+-==-  :*###*+#@@@@@@@@@@@@@@@@</tspan>
-    <tspan x="15" y="204">@@@@@@@@@@@@@@@**======-.    .:::::::@=+=-: :. +--:+#*@@@@@@@@@@@@@@@@</tspan>
-    <tspan x="15" y="218">@@@@@@@@@@@@@@=##--+-:::    ..:: .==@=++---#+= .::.#+%@@@@@@@@@@@@@@@@</tspan>
-    <tspan x="15" y="232">@@@@@@@@@@@@@==@@#-  :+=.         *#-++=-::=+=. :-.%=@@@@@@@@@%@@@@@@@</tspan>
-    <tspan x="15" y="246">@@@@@@@@@@@@%*@@@%=-+*+::       ..---=--::.::-: ::=#%@@@@@%%%%%%%%%%@@</tspan>
-    <tspan x="15" y="260">@@@@@@@@@@@@@@@@@@%**-#-**+=-----=--=--...  ..: . #:@@@@@@@%%@%%%%%%%%</tspan>
-    <tspan x="15" y="274">@@@@@@@@@@@@@@@@@@@@%%#+*+=++--...:--:       .. .*:+@@@@@@%%%@@%%@@%#%</tspan>
-    <tspan x="15" y="288">@@@@@@@@@@@@@@@@@@@@@*#+=- ::::::::.:.       .  -.*%@@@@%%@%%@@@@@%#%%</tspan>
-    <tspan x="15" y="302">@@@@@@@@@@@@@@@@@#-.   -:.......   .           # *=@@@@@@@%##@@@%%%%%%</tspan>
-    <tspan x="15" y="316">@@@@@@@@@@@@@@=:....  .  ===.......   ----=###++.*#@@@@@@%%##@@%%%%%@%</tspan>
-    <tspan x="15" y="330">@@@@@@@@@@@@*+-:.::. ... :@@*::.    :+++**####++.-#@@@@@@%###@%%%%%@@%</tspan>
-    <tspan x="15" y="344">@@@@@@@@@@@++-=:..:: -.:. *%#*++=:  ::-::%+..:=+ .::%%%%%%#%#%%%%%%@@%</tspan>
-    <tspan x="15" y="358">@@@@@@@@@@*+=-=:... . .--+@##**+-:. ..-+.  -----=+...=@@@@@@@@%%#%%@@%</tspan>
-    <tspan x="15" y="372">@@@@@@@**+=--:::-:::.:*+ =@%#%%%=----+=--..::-:.....-=-*@%@@@@%%#%@@@%</tspan>
-    <tspan x="15" y="386">@@@@@@--=-:-=..:-.    #%- #%%%%#+###+% .-:. ::---:..-==:=@%%%%%#%%%%%%</tspan>
-    <tspan x="15" y="400">@@@@@%%---=-::::::. .:*###*#%%%**#%##===-:::. .   .....--=%%%%%%%%%%%%</tspan>
-    <tspan x="15" y="414">@@@@@+#*::--::.::-=#**###**%%%%+#####*#--:.::..     ::-..::%%%%%%%%@@@</tspan>
-    <tspan x="15" y="428">@@@@@####=.   .:%##==+#%%%%%%%%*######=:::..:.   . .::...  .+@@%%%%@@@</tspan>
-    <tspan x="15" y="442">@@@@@@%++##**=+*%@#%%%%%%%%%%#%*#####%#*-..... . :     .. =*%@@@@@@@@@</tspan>
-    <tspan x="15" y="456">@@@@@%%##%##%%%%%%%%%%%%%%%%%+**####%#*#*++=:. :::     +%%##@@@@@@@@@@</tspan>
-    <tspan x="15" y="470">@@@@%@%%%%%%%%%%%%%%%%%%%%%%%%%*###%#***#*==%*:.::.  .#+=-+@@@@@@@@@@@</tspan>
-    <tspan x="15" y="484">@@@@%%@%#%%%%%#%@%%%%%%%%%%%%%@####%+++=*==*@%%#*+-:.*::=:@@@@@@@@@@@@</tspan>
-    <tspan x="15" y="498">@@@@@%%####%%%%%@@%%%%%%%%@@@@@###%%+###*#+#%%@%%%#**++*=%@@@@@@@@@@@@</tspan>
-    <tspan x="15" y="512">@@@@@@@%%%##%%@@@@@@@%%@@@@@@@%##%%%%%#=#*+*%%@%%%%%%-:=%%%@@@@%@@@@@%</tspan>
-    <tspan x="15" y="526">@@@@@@@%%%%%%@@@@@@@@@@@@@@@@@####%%%%%%%##%%@%%%%%%%%%%%%%%%%%%@@@%%%</tspan>
+{ascii_lines}
   </text>
 
 
@@ -230,7 +297,7 @@
     <tspan
         class="value"
         id="commit_data"
-    >444</tspan>
+    >439</tspan>
 
     <tspan x="440" y="465">. </tspan>
     <tspan class="key">Lines of Code</tspan>
@@ -238,7 +305,7 @@
     <tspan
         class="value"
         id="loc_data"
-    >2,134 ( <tspan class="addColor" id="loc_add">2,496</tspan><tspan class="addColor">++</tspan>, <tspan id="loc_del_dots"> </tspan><tspan class="delColor" id="loc_del">362</tspan><tspan class="delColor">--</tspan> )</tspan>
+    >915</tspan>
 
 
     <!-- Interests -->
@@ -266,3 +333,26 @@
   </text>
 
 </svg>
+'''
+
+
+def main():
+    light_path = BASE / "light_mode.svg"
+    dark_path = BASE / "dark_mode.svg"
+
+    light_path.write_text(profile_svg(dark=False))
+    dark_path.write_text(profile_svg(dark=True))
+
+    print("✓ Rebuilt light_mode.svg")
+    print("✓ Rebuilt dark_mode.svg")
+    print(f"✓ Imported {len(ASCII)} ASCII-art lines")
+    print("✓ Fixed canvas: 985 × 650")
+    print("✓ ASCII column: x=15")
+    print("✓ ASCII font: 10px")
+    print("✓ ASCII line height: 14px")
+    print("✓ Terminal column: x=440")
+    print("✓ Added languages: Java, JavaScript, Python, SQL")
+
+
+if __name__ == "__main__":
+    main()

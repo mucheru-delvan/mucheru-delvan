@@ -2,7 +2,6 @@ import datetime
 from dateutil import relativedelta
 import requests
 import os
-import re
 
 
 def load_env_file():
@@ -648,49 +647,98 @@ def update_svg_with_stats_text(
     stats,
 ):
     """
-    Update dynamic GitHub statistics in the rebuilt SVG.
-
-    The rebuilt SVG uses dedicated IDs for each dynamic value,
-    making the replacements independent of the SVG layout.
+    Replace the existing GitHub Stats values
+    and replace Year with Uptime.
     """
 
+    uptime = stats["uptime"]
+
+    # ---------------------------------------------------------
+    # Replace the actual uptime value first.
+    # This works for both SVG files.
+    # ---------------------------------------------------------
+
+    svg_content = svg_content.replace(
+        "Fourth Year",
+        uptime,
+    )
+
+    # ---------------------------------------------------------
+    # Replace the Year label.
+    # ---------------------------------------------------------
+
+    # Light mode SVG:
+    # . Year</tspan>: ............Fourth Year<tspan
+    svg_content = svg_content.replace(
+        ". Year</tspan>:",
+        ". Uptime</tspan>:",
+    )
+
+    # Dark mode SVG:
+    # id="tspan138">Year</tspan>
+    svg_content = svg_content.replace(
+        'id="tspan138">Year</tspan>',
+        'id="tspan138">Uptime</tspan>',
+    )
+
+    # ---------------------------------------------------------
+    # Existing GitHub statistics
+    # ---------------------------------------------------------
+
+    lines = svg_content.splitlines()
+
     replacements = {
-        "uptime_data": stats["uptime"],
-        "repo_data": str(stats["repos"]),
-        "star_data": str(stats["stars"]),
-        "follower_data": str(stats["followers"]),
-        "commit_data": str(stats["commits"]),
-        "loc_data": generate_svg_loc(
+        "Repos": str(stats["repos"]),
+        "Stars": str(stats["stars"]),
+        "Followers": str(stats["followers"]),
+        "Commits": str(stats["commits"]),
+        "Lines of Code": generate_svg_loc(
             stats["loc"]
         ),
     }
 
-    for element_id, value in replacements.items():
+    for index, line in enumerate(lines):
 
-        pattern = (
-            rf'(<tspan[^>]*id="{re.escape(element_id)}"'
-            rf'[^>]*>)(.*?)(</tspan>)'
-        )
+        for label, value in replacements.items():
 
-        svg_content, count = re.subn(
-            pattern,
-            lambda match: (
-                match.group(1)
-                + str(value)
-                + match.group(3)
-            ),
-            svg_content,
-            count=1,
-            flags=re.DOTALL,
-        )
+            if f">{label}</tspan>" not in line:
+                continue
 
-        if count == 0:
-            print(
-                f"⚠ Warning: Could not find "
-                f'id="{element_id}" in SVG.'
-            )
+            for next_index in range(
+                index + 1,
+                min(index + 8, len(lines)),
+            ):
 
-    return svg_content
+                if 'class="value"' in lines[
+                    next_index
+                ]:
+
+                    value_line = lines[
+                        next_index
+                    ]
+
+                    start = value_line.find(
+                        ">"
+                    )
+                    end = value_line.rfind(
+                        "<"
+                    )
+
+                    if (
+                        start != -1
+                        and end != -1
+                    ):
+                        lines[next_index] = (
+                            value_line[
+                                :start + 1
+                            ]
+                            + value
+                            + value_line[end:]
+                        )
+
+                    break
+
+    return "\n".join(lines)
 
 
 def update_svg_file(path, stats):
