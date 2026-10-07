@@ -5,7 +5,10 @@ import os
 
 
 def load_env_file():
-    env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
+    env_path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        ".env",
+    )
 
     if not os.path.exists(env_path):
         return
@@ -27,8 +30,10 @@ def load_env_file():
 
 load_env_file()
 
+
 TOKEN = os.environ.get("ACCESS_TOKEN", "")
 USER_NAME = os.environ.get("USER_NAME", "mucheru-delvan")
+
 
 def is_token_valid(token):
     if not token or len(token) < 10:
@@ -40,19 +45,36 @@ def is_token_valid(token):
     return True
 
 
-HEADERS = {"authorization": "token " + TOKEN} if is_token_valid(TOKEN) else {}
+HEADERS = (
+    {"authorization": "token " + TOKEN}
+    if is_token_valid(TOKEN)
+    else {}
+)
+
 USE_LIVE_DATA = is_token_valid(TOKEN)
 
 
-def daily_readme(birthday):
+def calculate_uptime(birthday):
     """
     Returns the length of time since I was born.
     """
-    birth_date = datetime.datetime.strptime(birthday, "%Y-%m-%d")
-    today = datetime.datetime.today()
-    age = relativedelta.relativedelta(today, birth_date)
+    birth_date = datetime.datetime.strptime(
+        birthday,
+        "%Y-%m-%d",
+    )
 
-    return f"{age.years} years, {age.months} months, {age.days} days"
+    today = datetime.datetime.today()
+
+    uptime = relativedelta.relativedelta(
+        today,
+        birth_date,
+    )
+
+    return (
+        f"{uptime.years} years, "
+        f"{uptime.months} months, "
+        f"{uptime.days} days"
+    )
 
 
 def user_getter():
@@ -79,11 +101,19 @@ def user_getter():
         if response.status_code == 200:
             return response.json()
 
-        print(f"Warning: Failed to fetch user data: {response.status_code}")
+        print(
+            "Warning: Failed to fetch user data: "
+            f"{response.status_code}"
+        )
+
         return None
 
     except Exception as e:
-        print(f"Warning: Error fetching user data: {e}")
+        print(
+            "Warning: Error fetching user data: "
+            f"{e}"
+        )
+
         return None
 
 
@@ -106,16 +136,26 @@ def follower_getter():
         if response.status_code == 200:
             return len(response.json())
 
-        print(f"Warning: Failed to fetch followers: {response.status_code}")
+        print(
+            "Warning: Failed to fetch followers: "
+            f"{response.status_code}"
+        )
+
         return 0
 
     except Exception as e:
-        print(f"Warning: Error fetching followers: {e}")
+        print(
+            "Warning: Error fetching followers: "
+            f"{e}"
+        )
+
         return 0
+
 
 def graph_repos_stars():
     """
-    Gets total stars across all public repositories using GitHub GraphQL API.
+    Gets total stars across all public repositories
+    using GitHub GraphQL API.
     """
     if not USE_LIVE_DATA:
         return 45
@@ -163,24 +203,31 @@ def graph_repos_stars():
 
             if response.status_code != 200:
                 print(
-                    f"Warning: Failed to fetch stars: "
+                    "Warning: Failed to fetch stars: "
                     f"{response.status_code}"
                 )
+
                 return 0
 
             data = response.json()
 
             if data.get("errors"):
                 print(
-                    f"Warning: GitHub GraphQL error fetching stars: "
+                    "Warning: GitHub GraphQL error "
+                    "fetching stars: "
                     f"{data['errors']}"
                 )
+
                 return 0
 
             user = data.get("data", {}).get("user")
 
             if not user:
-                print("Warning: GitHub user data missing while fetching stars")
+                print(
+                    "Warning: GitHub user data missing "
+                    "while fetching stars"
+                )
+
                 return 0
 
             repositories = user.get("repositories")
@@ -190,9 +237,15 @@ def graph_repos_stars():
 
             for repo in repositories.get("nodes", []):
                 if repo:
-                    total_stars += repo.get("stargazerCount", 0)
+                    total_stars += repo.get(
+                        "stargazerCount",
+                        0,
+                    )
 
-            page_info = repositories.get("pageInfo", {})
+            page_info = repositories.get(
+                "pageInfo",
+                {},
+            )
 
             if not page_info.get("hasNextPage"):
                 break
@@ -205,8 +258,13 @@ def graph_repos_stars():
         return total_stars
 
     except Exception as e:
-        print(f"Warning: Error fetching stars: {e}")
+        print(
+            "Warning: Error fetching stars: "
+            f"{e}"
+        )
+
         return 0
+
 
 def recursive_loc(path=".", depth=0, max_depth=10):
     """
@@ -219,7 +277,10 @@ def recursive_loc(path=".", depth=0, max_depth=10):
 
     try:
         for item in os.listdir(path):
-            item_path = os.path.join(path, item)
+            item_path = os.path.join(
+                path,
+                item,
+            )
 
             if os.path.isfile(item_path):
                 if item_path.endswith(
@@ -257,7 +318,10 @@ def recursive_loc(path=".", depth=0, max_depth=10):
                             encoding="utf-8",
                             errors="ignore",
                         ) as f:
-                            loc += sum(1 for line in f)
+                            loc += sum(
+                                1
+                                for line in f
+                            )
 
                     except Exception:
                         pass
@@ -361,24 +425,35 @@ def graph_commits():
 
             if response.status_code != 200:
                 print(
-                    f"Warning: Failed to fetch repository data: "
+                    "Warning: Failed to fetch "
+                    "repository data: "
                     f"{response.status_code}"
                 )
+
                 return 0
 
             data = response.json()
 
             if data.get("errors"):
                 print(
-                    f"Warning: GitHub GraphQL error fetching repositories: "
+                    "Warning: GitHub GraphQL error "
+                    "fetching repositories: "
                     f"{data['errors']}"
                 )
+
                 return 0
 
-            user = data.get("data", {}).get("user")
+            user = data.get(
+                "data",
+                {},
+            ).get("user")
 
             if not user:
-                print("Warning: GitHub user data missing while fetching commits")
+                print(
+                    "Warning: GitHub user data missing "
+                    "while fetching commits"
+                )
+
                 return 0
 
             repo_data = user.get("repositories")
@@ -392,7 +467,10 @@ def graph_commits():
                 if repo
             )
 
-            page_info = repo_data.get("pageInfo", {})
+            page_info = repo_data.get(
+                "pageInfo",
+                {},
+            )
 
             if not page_info.get("hasNextPage"):
                 break
@@ -405,7 +483,11 @@ def graph_commits():
         total_commits = 0
 
         for repo in repositories:
-            owner = repo.get("owner", {}).get("login")
+            owner = repo.get(
+                "owner",
+                {},
+            ).get("login")
+
             name = repo.get("name")
 
             if not owner or not name:
@@ -442,7 +524,9 @@ def graph_commits():
                 if not repository:
                     continue
 
-                default_branch = repository.get("defaultBranchRef")
+                default_branch = repository.get(
+                    "defaultBranchRef"
+                )
 
                 if not default_branch:
                     continue
@@ -457,7 +541,10 @@ def graph_commits():
                 if not history:
                     continue
 
-                total_commits += history.get("totalCount", 0)
+                total_commits += history.get(
+                    "totalCount",
+                    0,
+                )
 
             except Exception:
                 continue
@@ -465,7 +552,11 @@ def graph_commits():
         return total_commits
 
     except Exception as e:
-        print(f"Warning: Error fetching commit data: {e}")
+        print(
+            "Warning: Error fetching commit data: "
+            f"{e}"
+        )
+
         return 0
 
 
@@ -493,10 +584,12 @@ def generate_svg_loc(loc_data):
 
     return (
         f'{loc_str} ( '
-        f'<tspan class="addColor" id="loc_add">{loc_add}</tspan>'
+        f'<tspan class="addColor" id="loc_add">'
+        f'{loc_add}</tspan>'
         f'<tspan class="addColor">++</tspan>, '
         f'<tspan id="loc_del_dots"> </tspan>'
-        f'<tspan class="delColor" id="loc_del">{loc_del}</tspan>'
+        f'<tspan class="delColor" id="loc_del">'
+        f'{loc_del}</tspan>'
         f'<tspan class="delColor">--</tspan> )'
     )
 
@@ -504,102 +597,88 @@ def generate_svg_loc(loc_data):
 def update_svg_with_stats_text(svg_content, stats):
     """
     Replace the existing GitHub Stats values.
-
-    This function does NOT insert a new stats section.
-    Therefore, running the script multiple times will not
-    create duplicate GitHub Stats sections.
     """
 
     lines = svg_content.splitlines()
+
+    # ---------------------------------------------------------
+    # Update Year -> Uptime
+    # ---------------------------------------------------------
+
+    uptime = stats["uptime"]
+
+    for index, line in enumerate(lines):
+        if (
+            'id="tspan138"' in line
+            and ">Year</tspan>" in line
+        ):
+            lines[index] = line.replace(
+                ">Year</tspan>",
+                ">Uptime</tspan>",
+            )
+
+        if "Fourth Year" in line:
+            lines[index] = line.replace(
+                "Fourth Year",
+                uptime,
+            )
+
+    # ---------------------------------------------------------
+    # Existing GitHub statistics
+    # ---------------------------------------------------------
 
     replacements = {
         "Repos": str(stats["repos"]),
         "Stars": str(stats["stars"]),
         "Followers": str(stats["followers"]),
         "Commits": str(stats["commits"]),
-        "Lines of Code": generate_svg_loc(stats["loc"]),
+        "Lines of Code": generate_svg_loc(
+            stats["loc"]
+        ),
     }
 
-    found = {
-        "Repos": False,
-        "Stars": False,
-        "Followers": False,
-        "Commits": False,
-        "Lines of Code": False,
-    }
-
+    # Find each statistic label and replace the
+    # corresponding value in the following SVG lines.
     for index, line in enumerate(lines):
 
         for label, value in replacements.items():
 
-            if (
-                f'<tspan class="key">{label}</tspan>'
-                in line
+            if f">{label}</tspan>" not in line:
+                continue
+
+            for next_index in range(
+                index + 1,
+                min(index + 8, len(lines)),
             ):
-                prefix = (
-                    f'<tspan x="390" y="'
-                )
+                if 'class="value"' in lines[next_index]:
 
-                if not line.startswith(prefix):
-                    continue
+                    value_line = lines[next_index]
 
-                value_start = (
-                    '<tspan class="value">'
-                )
+                    start = value_line.find(">")
 
-                value_start_index = line.find(value_start)
+                    end = value_line.rfind("<")
 
-                if value_start_index == -1:
-                    continue
+                    if start != -1 and end != -1:
+                        lines[next_index] = (
+                            value_line[: start + 1]
+                            + value
+                            + value_line[end:]
+                        )
 
-                value_start_index += len(value_start)
+                    break
 
-                if label == "Lines of Code":
-                    new_line = (
-                        line[:value_start_index]
-                        + value
-                        + "</tspan>"
-                    )
-
-                else:
-                    value_end_index = line.find(
-                        "</tspan>",
-                        value_start_index,
-                    )
-
-                    if value_end_index == -1:
-                        continue
-
-                    new_line = (
-                        line[:value_start_index]
-                        + value
-                        + line[value_end_index:]
-                    )
-
-                lines[index] = new_line
-                found[label] = True
-                break
-
-    missing = [
-        label
-        for label, was_found in found.items()
-        if not was_found
-    ]
-
-    if missing:
-        raise ValueError(
-            "Could not find existing SVG stat fields: "
-            + ", ".join(missing)
-        )
-
-    return "\n".join(lines) + "\n"
+    return "\n".join(lines)
 
 
 def update_svg_file(path, stats):
     """
     Update one SVG file without changing its layout.
     """
-    with open(path, "r", encoding="utf-8") as file:
+    with open(
+        path,
+        "r",
+        encoding="utf-8",
+    ) as file:
         svg_content = file.read()
 
     updated_svg = update_svg_with_stats_text(
@@ -607,10 +686,16 @@ def update_svg_file(path, stats):
         stats,
     )
 
-    with open(path, "w", encoding="utf-8") as file:
+    with open(
+        path,
+        "w",
+        encoding="utf-8",
+    ) as file:
         file.write(updated_svg)
 
-    print(f"✓ Updated {os.path.basename(path)}")
+    print(
+        f"✓ Updated {os.path.basename(path)}"
+    )
 
 
 def update_both_svgs_with_stats():
@@ -619,15 +704,23 @@ def update_both_svgs_with_stats():
     """
 
     if USE_LIVE_DATA:
-        print("Fetching live GitHub statistics...")
+        print(
+            "Fetching live GitHub statistics..."
+        )
 
         user_data = user_getter()
 
         if not user_data:
-            print("Warning: Could not fetch user data.")
+            print(
+                "Warning: Could not fetch user data."
+            )
+
             return
 
-        repos_count = user_data.get("public_repos", 0)
+        repos_count = user_data.get(
+            "public_repos",
+            0,
+        )
 
         followers = follower_getter()
         stars_count = graph_repos_stars()
@@ -635,7 +728,10 @@ def update_both_svgs_with_stats():
         loc_count = loc_query()
 
     else:
-        print("Using demo statistics (no valid token provided)...")
+        print(
+            "Using demo statistics "
+            "(no valid token provided)..."
+        )
 
         repos_count = 8
         stars_count = 45
@@ -643,17 +739,29 @@ def update_both_svgs_with_stats():
         commit_count = 287
         loc_count = 12850
 
+    # ---------------------------------------------------------
+    # All statistics displayed in the SVG
+    # ---------------------------------------------------------
+
     stats = {
         "repos": repos_count,
         "stars": stars_count,
         "followers": followers,
         "commits": commit_count,
         "loc": loc_count,
+        "uptime": calculate_uptime(
+            "2005-03-07"
+        ),
     }
 
-    print(f"Stats to display: {stats}")
+    print(
+        f"Stats to display: {stats}"
+    )
 
-    base_dir = "/home/delvan-mucheru/mucheru-delvan"
+    base_dir = (
+        "/home/delvan-mucheru/"
+        "mucheru-delvan"
+    )
 
     light_path = os.path.join(
         base_dir,
@@ -665,24 +773,53 @@ def update_both_svgs_with_stats():
         "dark_mode.svg",
     )
 
-    update_svg_file(light_path, stats)
-    update_svg_file(dark_path, stats)
+    update_svg_file(
+        light_path,
+        stats,
+    )
 
-    print("\n✓ SVG files updated successfully.")
-    print("✓ Existing GitHub Stats section was updated in place.")
-    print("✓ No SVG sections were inserted.")
+    update_svg_file(
+        dark_path,
+        stats,
+    )
+
+    print(
+        "\n✓ SVG files updated successfully."
+    )
+
+    print(
+        "✓ Existing GitHub Stats section "
+        "was updated in place."
+    )
+
+    print(
+        "✓ Year field replaced with Uptime."
+    )
 
 
 def main():
-    print("GitHub Profile SVG Updater")
-    print("===========================")
+    print(
+        "GitHub Profile SVG Updater"
+    )
+
+    print(
+        "==========================="
+    )
 
     if USE_LIVE_DATA:
-        print("🔑 Using live GitHub data from token")
+        print(
+            "🔑 Using live GitHub data from token"
+        )
     else:
-        print("⚠️  No valid token found - using demo data")
+        print(
+            "⚠️  No valid token found - "
+            "using demo data"
+        )
 
-    print("\nFetching statistics and updating SVG files...")
+    print(
+        "\nFetching statistics and "
+        "updating SVG files..."
+    )
 
     update_both_svgs_with_stats()
 
