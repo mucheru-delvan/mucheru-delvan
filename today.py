@@ -13,16 +13,28 @@ def load_env_file():
     if not os.path.exists(env_path):
         return
 
-    with open(env_path, "r", encoding="utf-8") as env_file:
+    with open(
+        env_path,
+        "r",
+        encoding="utf-8",
+    ) as env_file:
         for line in env_file:
             line = line.strip()
 
-            if not line or line.startswith("#") or "=" not in line:
+            if (
+                not line
+                or line.startswith("#")
+                or "=" not in line
+            ):
                 continue
 
             key, value = line.split("=", 1)
             key = key.strip()
-            value = value.strip().strip('"').strip("'")
+            value = (
+                value.strip()
+                .strip('"')
+                .strip("'")
+            )
 
             if key and key not in os.environ:
                 os.environ[key] = value
@@ -30,8 +42,15 @@ def load_env_file():
 
 load_env_file()
 
-TOKEN = os.environ.get("ACCESS_TOKEN", "")
-USER_NAME = os.environ.get("USER_NAME", "mucheru-delvan")
+TOKEN = os.environ.get(
+    "ACCESS_TOKEN",
+    "",
+)
+
+USER_NAME = os.environ.get(
+    "USER_NAME",
+    "mucheru-delvan",
+)
 
 
 def is_token_valid(token):
@@ -45,7 +64,9 @@ def is_token_valid(token):
 
 
 HEADERS = (
-    {"authorization": "token " + TOKEN}
+    {
+        "authorization": "token " + TOKEN
+    }
     if is_token_valid(TOKEN)
     else {}
 )
@@ -88,7 +109,10 @@ def user_getter():
             "created_at": "2023-09-15T08:30:00Z",
         }
 
-    url = f"https://api.github.com/users/{USER_NAME}"
+    url = (
+        f"https://api.github.com/users/"
+        f"{USER_NAME}"
+    )
 
     try:
         response = requests.get(
@@ -122,7 +146,10 @@ def follower_getter():
     if not USE_LIVE_DATA:
         return 12
 
-    url = f"https://api.github.com/users/{USER_NAME}/followers"
+    url = (
+        f"https://api.github.com/users/"
+        f"{USER_NAME}/followers"
+    )
 
     try:
         response = requests.get(
@@ -214,7 +241,11 @@ def graph_repos_stars():
                 )
                 return 0
 
-            user = data.get("data", {}).get("user")
+            user = (
+                data
+                .get("data", {})
+                .get("user")
+            )
 
             if not user:
                 print(
@@ -223,12 +254,17 @@ def graph_repos_stars():
                 )
                 return 0
 
-            repositories = user.get("repositories")
+            repositories = user.get(
+                "repositories"
+            )
 
             if not repositories:
                 return 0
 
-            for repo in repositories.get("nodes", []):
+            for repo in repositories.get(
+                "nodes",
+                [],
+            ):
                 if repo:
                     total_stars += repo.get(
                         "stargazerCount",
@@ -240,10 +276,14 @@ def graph_repos_stars():
                 {},
             )
 
-            if not page_info.get("hasNextPage"):
+            if not page_info.get(
+                "hasNextPage"
+            ):
                 break
 
-            cursor = page_info.get("endCursor")
+            cursor = page_info.get(
+                "endCursor"
+            )
 
             if not cursor:
                 break
@@ -257,7 +297,11 @@ def graph_repos_stars():
         return 0
 
 
-def recursive_loc(path=".", depth=0, max_depth=10):
+def recursive_loc(
+    path=".",
+    depth=0,
+    max_depth=10,
+):
     """
     Recursively counts lines of code in the local repository.
     """
@@ -310,7 +354,8 @@ def recursive_loc(path=".", depth=0, max_depth=10):
                             errors="ignore",
                         ) as f:
                             loc += sum(
-                                1 for line in f
+                                1
+                                for line in f
                             )
 
                     except Exception:
@@ -415,7 +460,8 @@ def graph_commits():
             if response.status_code != 200:
                 print(
                     "Warning: Failed to fetch "
-                    f"repository data: {response.status_code}"
+                    f"repository data: "
+                    f"{response.status_code}"
                 )
                 return 0
 
@@ -424,14 +470,16 @@ def graph_commits():
             if data.get("errors"):
                 print(
                     "Warning: GitHub GraphQL error "
-                    f"fetching repositories: {data['errors']}"
+                    f"fetching repositories: "
+                    f"{data['errors']}"
                 )
                 return 0
 
-            user = data.get(
-                "data",
-                {},
-            ).get("user")
+            user = (
+                data
+                .get("data", {})
+                .get("user")
+            )
 
             if not user:
                 print(
@@ -440,14 +488,19 @@ def graph_commits():
                 )
                 return 0
 
-            repo_data = user.get("repositories")
+            repo_data = user.get(
+                "repositories"
+            )
 
             if not repo_data:
                 return 0
 
             repositories.extend(
                 repo
-                for repo in repo_data.get("nodes", [])
+                for repo in repo_data.get(
+                    "nodes",
+                    [],
+                )
                 if repo
             )
 
@@ -456,10 +509,14 @@ def graph_commits():
                 {},
             )
 
-            if not page_info.get("hasNextPage"):
+            if not page_info.get(
+                "hasNextPage"
+            ):
                 break
 
-            cursor = page_info.get("endCursor")
+            cursor = page_info.get(
+                "endCursor"
+            )
 
             if not cursor:
                 break
@@ -467,10 +524,11 @@ def graph_commits():
         total_commits = 0
 
         for repo in repositories:
-            owner = repo.get(
-                "owner",
-                {},
-            ).get("login")
+            owner = (
+                repo
+                .get("owner", {})
+                .get("login")
+            )
 
             name = repo.get("name")
 
@@ -494,7 +552,9 @@ def graph_commits():
                 if commit_response.status_code != 200:
                     continue
 
-                commit_data = commit_response.json()
+                commit_data = (
+                    commit_response.json()
+                )
 
                 if commit_data.get("errors"):
                     continue
@@ -508,19 +568,25 @@ def graph_commits():
                 if not repository:
                     continue
 
-                default_branch = repository.get(
-                    "defaultBranchRef"
+                default_branch = (
+                    repository.get(
+                        "defaultBranchRef"
+                    )
                 )
 
                 if not default_branch:
                     continue
 
-                target = default_branch.get("target")
+                target = default_branch.get(
+                    "target"
+                )
 
                 if not target:
                     continue
 
-                history = target.get("history")
+                history = target.get(
+                    "history"
+                )
 
                 if not history:
                     continue
@@ -575,7 +641,11 @@ def generate_svg_loc(loc_data):
         f'<tspan class="delColor">--</tspan> )'
     )
 
-def update_svg_with_stats_text(svg_content, stats):
+
+def update_svg_with_stats_text(
+    svg_content,
+    stats,
+):
     """
     Replace the existing GitHub Stats values
     and replace Year with Uptime.
@@ -639,16 +709,29 @@ def update_svg_with_stats_text(svg_content, stats):
                 min(index + 8, len(lines)),
             ):
 
-                if 'class="value"' in lines[next_index]:
+                if 'class="value"' in lines[
+                    next_index
+                ]:
 
-                    value_line = lines[next_index]
+                    value_line = lines[
+                        next_index
+                    ]
 
-                    start = value_line.find(">")
-                    end = value_line.rfind("<")
+                    start = value_line.find(
+                        ">"
+                    )
+                    end = value_line.rfind(
+                        "<"
+                    )
 
-                    if start != -1 and end != -1:
+                    if (
+                        start != -1
+                        and end != -1
+                    ):
                         lines[next_index] = (
-                            value_line[:start + 1]
+                            value_line[
+                                :start + 1
+                            ]
                             + value
                             + value_line[end:]
                         )
@@ -752,9 +835,8 @@ def update_both_svgs_with_stats():
     # SVG paths
     # ---------------------------------------------------------
 
-    base_dir = (
-        "/home/delvan-mucheru/"
-        "mucheru-delvan"
+    base_dir = os.path.dirname(
+        os.path.abspath(__file__)
     )
 
     light_path = os.path.join(
