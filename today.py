@@ -1,8 +1,11 @@
 import datetime
-from dateutil import relativedelta
-import requests
+import io
 import os
 import re
+import zipfile
+
+from dateutil import relativedelta
+import requests
 
 
 def load_env_file():
@@ -305,6 +308,9 @@ def recursive_loc(
 ):
     """
     Recursively counts lines of code in the local repository.
+
+    Kept as a local fallback/helper. The live LOC statistic
+    now uses GitHub public repositories instead.
     """
     if depth > max_depth:
         return 0
@@ -387,6 +393,286 @@ def recursive_loc(
         pass
 
     return loc
+
+
+def github_public_repos_loc():
+    """
+    Gets total lines of code across all owned public
+    non-fork GitHub repositories.
+    """
+
+    url = "https://api.github.com/graphql"
+
+    repo_query = """
+    query($login: String!, $cursor: String) {
+      user(login: $login) {
+        repositories(
+          first: 100
+          after: $cursor
+          privacy: PUBLIC
+          isFork: false
+          ownerAffiliations: OWNER
+        ) {
+          pageInfo {
+            hasNextPage
+            endCursor
+          }
+          nodes {
+            name
+            owner {
+              login
+            }
+          }
+        }
+      }
+    }
+    """
+
+    source_extensions = (
+        ".py",
+        ".js",
+        ".ts",
+        ".html",
+        ".css",
+        ".scss",
+        ".md",
+        ".txt",
+        ".json",
+        ".xml",
+        ".yml",
+        ".yaml",
+        ".java",
+        ".c",
+        ".cpp",
+        ".cs",
+        ".go",
+        ".rs",
+        ".php",
+        ".rb",
+        ".sh",
+        ".bash",
+        ".zsh",
+        ".fish",
+    )
+
+    excluded_directories = {
+        ".git",
+        "node_modules",
+        "__pycache__",
+        "dist",
+        "build",
+        "venv",
+        "env",
+        ".vscode",
+        ".idea",
+    }
+
+    try:
+        repositories = []
+        cursor = None
+
+        # -----------------------------------------------------
+        # Fetch all owned public repositories
+        # -----------------------------------------------------
+
+        while True:
+            response = requests.post(
+                url,
+                json={
+                    "query": repo_query,
+                    "variables": {
+                        "login": USER_NAME,
+                        "cursor": cursor,
+                    },
+                },
+                headers=HEADERS,
+                timeout=15,
+            )
+
+            if response.status_code != 200:
+                print(
+                    "Warning: Failed to fetch "
+                    f"repository data for LOC: "
+                    f"{response.status_code}"
+                )
+                return 0
+
+            data = response.json()
+
+            if data.get("errors"):
+                print(
+                    "Warning: GitHub GraphQL error "
+                    f"fetching repositories for LOC: "
+                    f"{data['errors']}"
+                )
+                return 0
+
+            user = (
+                data
+                .get("data", {})
+                .get("user")
+            )
+
+            if not user:
+                print(
+                    "Warning: GitHub user data missing "
+                    "while fetching LOC"
+                )
+                return 0
+
+            repo_data = user.get(
+                "repositories"
+            )
+
+            if not repo_data:
+                return 0
+
+            repositories.extend(
+                repo
+                for repo in repo_data.get(
+                    "nodes",
+                    [],
+                )
+                if repo
+            )
+
+            page_info = repo_data.get(
+                "pageInfo",
+                {},
+            )
+
+            if not page_info.get(
+                "hasNextPage"
+            ):
+                break
+
+            cursor = page_info.get(
+                "endCursor"
+            )
+
+            if not cursor:
+                break
+
+        print(
+            f"Counting LOC across "
+            f"{len(repositories)} public repositories..."
+        )
+
+        total_loc = 0
+
+        # -----------------------------------------------------
+        # Download and inspect each repository
+        # -----------------------------------------------------
+
+        for index, repo in enumerate(
+            repositories,
+            start=1,
+        ):
+            owner = (
+                repo
+                .get("owner", {})
+                .get("login")
+            )
+
+            name = repo.get("name")
+
+            if not owner or not name:
+                continue
+
+            print(
+                f"  [{index}/{len(repositories)}] "
+                f"{owner}/{name}"
+            )
+
+            archive_url = (
+                f"https://api.github.com/repos/"
+                f"{owner}/{name}/zipball"
+            )
+
+            try:
+                archive_response = requests.get(
+                    archive_url,
+                    headers=HEADERS,
+                    timeout=30,
+                )
+
+                if archive_response.status_code != 200:
+                    print(
+                        f"    Warning: Could not download "
+                        f"{owner}/{name}: "
+                        f"{archive_response.status_code}"
+                    )
+                    continue
+
+                with zipfile.ZipFile(
+                    io.BytesIO(
+                        archive_response.content
+                    )
+                ) as archive:
+
+                    repo_loc = 0
+
+                    for member in archive.infolist():
+
+                        if member.is_dir():
+                            continue
+
+                        path_parts = (
+                            member.filename.split("/")
+                        )
+
+                        # Skip excluded directories.
+                        if any(
+                            part in excluded_directories
+                            for part in path_parts
+                        ):
+                            continue
+
+                        if not member.filename.endswith(
+                            source_extensions
+                        ):
+                            continue
+
+                        try:
+                            with archive.open(
+                                member
+                            ) as file:
+                                content = file.read().decode(
+                                    "utf-8",
+                                    errors="ignore",
+                                )
+
+                            repo_loc += len(
+                                content.splitlines()
+                            )
+
+                        except Exception:
+                            continue
+
+                    total_loc += repo_loc
+
+                    print(
+                        f"    {repo_loc:,} lines"
+                    )
+
+            except Exception as e:
+                print(
+                    f"    Warning: Error processing "
+                    f"{owner}/{name}: {e}"
+                )
+                continue
+
+        print(
+            f"Total GitHub LOC: {total_loc:,}"
+        )
+
+        return total_loc
+
+    except Exception as e:
+        print(
+            f"Warning: Error calculating GitHub LOC: {e}"
+        )
+        return 0
 
 
 def graph_commits():
@@ -611,12 +897,13 @@ def graph_commits():
 
 def loc_query():
     """
-    Gets lines of code from the local repository.
+    Gets lines of code across all owned public
+    non-fork GitHub repositories.
     """
     if not USE_LIVE_DATA:
         return 12850
 
-    return recursive_loc(".")
+    return github_public_repos_loc()
 
 
 def generate_svg_loc(loc_data):
