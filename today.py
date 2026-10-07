@@ -30,7 +30,6 @@ def load_env_file():
 
 load_env_file()
 
-
 TOKEN = os.environ.get("ACCESS_TOKEN", "")
 USER_NAME = os.environ.get("USER_NAME", "mucheru-delvan")
 
@@ -102,7 +101,7 @@ def user_getter():
             return response.json()
 
         print(
-            "Warning: Failed to fetch user data: "
+            f"Warning: Failed to fetch user data: "
             f"{response.status_code}"
         )
 
@@ -110,8 +109,7 @@ def user_getter():
 
     except Exception as e:
         print(
-            "Warning: Error fetching user data: "
-            f"{e}"
+            f"Warning: Error fetching user data: {e}"
         )
 
         return None
@@ -137,7 +135,7 @@ def follower_getter():
             return len(response.json())
 
         print(
-            "Warning: Failed to fetch followers: "
+            f"Warning: Failed to fetch followers: "
             f"{response.status_code}"
         )
 
@@ -145,8 +143,7 @@ def follower_getter():
 
     except Exception as e:
         print(
-            "Warning: Error fetching followers: "
-            f"{e}"
+            f"Warning: Error fetching followers: {e}"
         )
 
         return 0
@@ -203,10 +200,9 @@ def graph_repos_stars():
 
             if response.status_code != 200:
                 print(
-                    "Warning: Failed to fetch stars: "
+                    f"Warning: Failed to fetch stars: "
                     f"{response.status_code}"
                 )
-
                 return 0
 
             data = response.json()
@@ -214,10 +210,8 @@ def graph_repos_stars():
             if data.get("errors"):
                 print(
                     "Warning: GitHub GraphQL error "
-                    "fetching stars: "
-                    f"{data['errors']}"
+                    f"fetching stars: {data['errors']}"
                 )
-
                 return 0
 
             user = data.get("data", {}).get("user")
@@ -227,7 +221,6 @@ def graph_repos_stars():
                     "Warning: GitHub user data missing "
                     "while fetching stars"
                 )
-
                 return 0
 
             repositories = user.get("repositories")
@@ -259,10 +252,8 @@ def graph_repos_stars():
 
     except Exception as e:
         print(
-            "Warning: Error fetching stars: "
-            f"{e}"
+            f"Warning: Error fetching stars: {e}"
         )
-
         return 0
 
 
@@ -319,8 +310,7 @@ def recursive_loc(path=".", depth=0, max_depth=10):
                             errors="ignore",
                         ) as f:
                             loc += sum(
-                                1
-                                for line in f
+                                1 for line in f
                             )
 
                     except Exception:
@@ -329,8 +319,7 @@ def recursive_loc(path=".", depth=0, max_depth=10):
             elif os.path.isdir(item_path):
                 if (
                     not item.startswith(".")
-                    and item
-                    not in [
+                    and item not in [
                         "node_modules",
                         "__pycache__",
                         ".git",
@@ -426,10 +415,8 @@ def graph_commits():
             if response.status_code != 200:
                 print(
                     "Warning: Failed to fetch "
-                    "repository data: "
-                    f"{response.status_code}"
+                    f"repository data: {response.status_code}"
                 )
-
                 return 0
 
             data = response.json()
@@ -437,10 +424,8 @@ def graph_commits():
             if data.get("errors"):
                 print(
                     "Warning: GitHub GraphQL error "
-                    "fetching repositories: "
-                    f"{data['errors']}"
+                    f"fetching repositories: {data['errors']}"
                 )
-
                 return 0
 
             user = data.get(
@@ -453,7 +438,6 @@ def graph_commits():
                     "Warning: GitHub user data missing "
                     "while fetching commits"
                 )
-
                 return 0
 
             repo_data = user.get("repositories")
@@ -553,10 +537,8 @@ def graph_commits():
 
     except Exception as e:
         print(
-            "Warning: Error fetching commit data: "
-            f"{e}"
+            f"Warning: Error fetching commit data: {e}"
         )
-
         return 0
 
 
@@ -596,27 +578,38 @@ def generate_svg_loc(loc_data):
 
 def update_svg_with_stats_text(svg_content, stats):
     """
-    Replace the existing GitHub Stats values.
+    Replace the existing GitHub Stats values
+    and replace Year with Uptime.
     """
 
     lines = svg_content.splitlines()
 
-    # ---------------------------------------------------------
-    # Update Year -> Uptime
-    # ---------------------------------------------------------
-
     uptime = stats["uptime"]
 
+    # ---------------------------------------------------------
+    # UPTIME
+    # ---------------------------------------------------------
+
     for index, line in enumerate(lines):
-        if (
-            'id="tspan138"' in line
-            and ">Year</tspan>" in line
-        ):
+
+        # Dark mode:
+        # id="tspan138">Year</tspan>
+        if 'id="tspan138">Year</tspan>' in line:
             lines[index] = line.replace(
-                ">Year</tspan>",
-                ">Uptime</tspan>",
+                'id="tspan138">Year</tspan>',
+                'id="tspan138">Uptime</tspan>',
             )
 
+        # Light mode:
+        # . Year</tspan>: ...................................
+        if ". Year</tspan>:" in line:
+            lines[index] = line.replace(
+                ". Year</tspan>:",
+                ". Uptime</tspan>:",
+            )
+
+        # Both SVGs contain:
+        # Fourth Year
         if "Fourth Year" in line:
             lines[index] = line.replace(
                 "Fourth Year",
@@ -624,7 +617,7 @@ def update_svg_with_stats_text(svg_content, stats):
             )
 
     # ---------------------------------------------------------
-    # Existing GitHub statistics
+    # GITHUB STATISTICS
     # ---------------------------------------------------------
 
     replacements = {
@@ -637,8 +630,6 @@ def update_svg_with_stats_text(svg_content, stats):
         ),
     }
 
-    # Find each statistic label and replace the
-    # corresponding value in the following SVG lines.
     for index, line in enumerate(lines):
 
         for label, value in replacements.items():
@@ -650,17 +641,17 @@ def update_svg_with_stats_text(svg_content, stats):
                 index + 1,
                 min(index + 8, len(lines)),
             ):
+
                 if 'class="value"' in lines[next_index]:
 
                     value_line = lines[next_index]
 
                     start = value_line.find(">")
-
                     end = value_line.rfind("<")
 
                     if start != -1 and end != -1:
                         lines[next_index] = (
-                            value_line[: start + 1]
+                            value_line[:start + 1]
                             + value
                             + value_line[end:]
                         )
@@ -674,6 +665,7 @@ def update_svg_file(path, stats):
     """
     Update one SVG file without changing its layout.
     """
+
     with open(
         path,
         "r",
@@ -704,6 +696,7 @@ def update_both_svgs_with_stats():
     """
 
     if USE_LIVE_DATA:
+
         print(
             "Fetching live GitHub statistics..."
         )
@@ -714,7 +707,6 @@ def update_both_svgs_with_stats():
             print(
                 "Warning: Could not fetch user data."
             )
-
             return
 
         repos_count = user_data.get(
@@ -728,6 +720,7 @@ def update_both_svgs_with_stats():
         loc_count = loc_query()
 
     else:
+
         print(
             "Using demo statistics "
             "(no valid token provided)..."
@@ -740,7 +733,7 @@ def update_both_svgs_with_stats():
         loc_count = 12850
 
     # ---------------------------------------------------------
-    # All statistics displayed in the SVG
+    # Statistics
     # ---------------------------------------------------------
 
     stats = {
@@ -758,6 +751,10 @@ def update_both_svgs_with_stats():
         f"Stats to display: {stats}"
     )
 
+    # ---------------------------------------------------------
+    # SVG paths
+    # ---------------------------------------------------------
+
     base_dir = (
         "/home/delvan-mucheru/"
         "mucheru-delvan"
@@ -772,6 +769,10 @@ def update_both_svgs_with_stats():
         base_dir,
         "dark_mode.svg",
     )
+
+    # ---------------------------------------------------------
+    # Update SVG files
+    # ---------------------------------------------------------
 
     update_svg_file(
         light_path,
@@ -793,7 +794,7 @@ def update_both_svgs_with_stats():
     )
 
     print(
-        "✓ Year field replaced with Uptime."
+        "✓ Year was replaced with Uptime."
     )
 
 
