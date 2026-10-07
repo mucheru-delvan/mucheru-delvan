@@ -27,7 +27,7 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="1.06"
-     inkscape:cx="466.03774"
+     inkscape:cx="466.98113"
      inkscape:cy="344.81132"
      inkscape:window-width="1920"
      inkscape:window-height="1011"
@@ -74,7 +74,9 @@ text, tspan {white-space: pre;}
    x="456.27695"
    y="27.54068"
    id="tspan21"
-   style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.4855px;font-family:C059;-inkscape-font-specification:'C059, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#d3bc5f;stroke-width:1.03035">delvan@mucheru</tspan> -———————————————————-—-
+   style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.4855px;font-family:C059;-inkscape-font-specification:'C059, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#d3bc5f;stroke-width:1.03035">delvan@mucheru</tspan> <tspan
+   style="fill:#ffdd55"
+   id="tspan3">-———————————————————-—-</tspan>
 <tspan
    x="456.27695"
    y="48.147587"
@@ -177,10 +179,12 @@ text, tspan {white-space: pre;}
    y="336.64429"
    id="tspan71"
    style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.4855px;font-family:C059;-inkscape-font-specification:'C059, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:1.03035">- <tspan
-   style="fill:#66ff00;stroke-width:1.03035"
+   style="fill:#ffd42a;stroke-width:1.03035"
    id="tspan153">Contact</tspan></tspan><tspan
-   style="fill:#66ff00;stroke-width:1.03035"
-   id="tspan154"> </tspan>-———————————————————————-—-
+   style="fill:#ffd42a;stroke-width:1.03035"
+   id="tspan154"> </tspan><tspan
+   style="fill:#ffd42a"
+   id="tspan4">-———————————————————————-—-</tspan>
 <tspan
    x="456.27695"
    y="357.25119"
@@ -222,8 +226,10 @@ text, tspan {white-space: pre;}
    y="439.6788"
    id="tspan89"
    style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.4855px;font-family:C059;-inkscape-font-specification:'C059, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:1.03035">- <tspan
-   style="fill:#66ff00;stroke-width:1.03035"
-   id="tspan163">GitHub Stats</tspan></tspan> —————————————————————-—-
+   style="fill:#ffd42a;stroke-width:1.03035"
+   id="tspan163">GitHub Stats</tspan></tspan><tspan
+   style="fill:#ffd42a"
+   id="tspan1"> —————————————————————-—</tspan>-
 <tspan
    x="456.27695"
    y="460.28574"
@@ -274,9 +280,11 @@ text, tspan {white-space: pre;}
    y="563.32025"
    id="tspan112"
    style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.4855px;font-family:C059;-inkscape-font-specification:'C059, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:1.03035">- <tspan
-   style="fill:#66ff00;stroke-width:1.03035"
-   id="tspan174">Interests</tspan></tspan> -———————————————————————-—-
-<tspan
+   style="fill:#ffd42a;stroke-width:1.03035"
+   id="tspan174">Interests</tspan></tspan> <tspan
+   style="fill:#ffd42a"
+   id="tspan5">-———————————————————————-—-
+</tspan><tspan
    x="456.27695"
    y="583.92719"
    class="cc"
@@ -299,10 +307,12 @@ text, tspan {white-space: pre;}
    y="625.14099"
    id="tspan127"
    style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.4855px;font-family:C059;-inkscape-font-specification:'C059, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke-width:1.03035">- <tspan
-   style="fill:#66ff00;stroke-width:1.03035"
+   style="fill:#ffdd55;stroke-width:1.03035"
    id="tspan179">Fun Fact</tspan></tspan><tspan
-   style="fill:#66ff00;stroke-width:1.03035"
-   id="tspan180"> </tspan>-————————————————————————-—-
+   style="fill:#ffdd55;stroke-width:1.03035"
+   id="tspan180"> </tspan><tspan
+   style="fill:#ffdd55"
+   id="tspan6">-————————————————————————-—</tspan>-
 <tspan
    x="456.27695"
    y="645.74786"
