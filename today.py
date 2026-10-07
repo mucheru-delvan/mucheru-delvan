@@ -907,27 +907,7 @@ def loc_query():
 
 
 def generate_svg_loc(loc_data):
-    """
-    Generates SVG text for the Lines of Code statistic.
-    """
-    loc_str = f"{loc_data:,}"
-
-    loc_add_int = int(loc_data * 1.17)
-    loc_add = f"{loc_add_int:,}"
-
-    loc_del_int = loc_add_int - loc_data
-    loc_del = f"{loc_del_int:,}"
-
-    return (
-        f'{loc_str} ( '
-        f'<tspan class="addColor" id="loc_add">'
-        f'{loc_add}</tspan>'
-        f'<tspan class="addColor">++</tspan>, '
-        f'<tspan id="loc_del_dots"> </tspan>'
-        f'<tspan class="delColor" id="loc_del">'
-        f'{loc_del}</tspan>'
-        f'<tspan class="delColor">--</tspan> )'
-    )
+    return f"{loc_data:,}"
 
 
 def update_svg_with_stats_text(
