@@ -39,3 +39,9 @@ Thumbs.db
 *.temp
 # Backup files
 *.backup
+
+__pycache__/
+*.pyc
+*.bak
+*.backup
+.env
