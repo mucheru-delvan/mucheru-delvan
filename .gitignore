@@ -44,4 +44,4 @@ __pycache__/
 *.pyc
 *.bak
 *.backup
-.env
+.env*.svg.save
