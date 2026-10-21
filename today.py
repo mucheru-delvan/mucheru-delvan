@@ -26,8 +26,8 @@ BIRTHDAY = "2005-03-07"
 GRAPHQL_URL = "https://api.github.com/graphql"
 REST_URL = "https://api.github.com"
 
-# Width (in columns) of the info column in the SVG.
-LINE_WIDTH = 54
+# Width (in columns) of the info column in the SVG (must match the SVG layout).
+LINE_WIDTH = 52
 
 # element id -> key label shown in the SVG (used to size the dot leaders)
 DOT_FIELDS = {
